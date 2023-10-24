@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reserva</title>
+</head>
+<body>
+<div th:if="${session.sucesso}">
+    <p style="color: green;">Reserva realizada com sucesso!</p>
+</div>
+
+<form action="/Reserva" method = "post">
+    <div>
+        <h2>Horario de abertura das portas</h2>
+    </div>
+    <br>
+    <div>
+        <label for="usuario">Usuário:</label>
+        <input type="text" id="usuario" name="usuario" required>
+    </div>
+    <div>
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
+    </div>
+    <div>
+        <label for="data_entrada">data_entrada:</label>
+        <input type="text" id="data_entrada" name="data_entrada" required>
+    </div>
+    <div>
+        <label for="data_saida">data_saida:</label>
+        <input type="text" id="data_saida" name="data_saida" required>
+    </div>
+    <div>
+        <label for="quarto">quarto: </label>
+        <input type="integer" id="quarto" name="quarto" required>
+    </div>
+    <div>
+        <input type="submit" value="Reservar">
+    </div>
+</form>
+</body>
+</html>
