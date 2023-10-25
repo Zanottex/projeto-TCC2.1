@@ -14,14 +14,13 @@ public class ProjetoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoApplication.class, args);
-		ArduinoSerialCommunication arduino = new ArduinoSerialCommunication();
-		arduino.initialize();
+		initialize();
 	}
 
 
-	public void initialize() {
+	public static void initialize() {
 		SerialPort[] ports = SerialPort.getCommPorts();
-
+		SerialPort serialPort;
 		if (ports.length == 0) {
 			System.out.println("Nenhuma porta serial encontrada.");
 			return;
