@@ -50,8 +50,8 @@ public class ProjetoApplication {
 		while (true) {
 			try {
 				if (input.ready()) {
-					String inputLine = input.readLine();
-					System.out.println("Dados recebidos: " + inputLine);
+					int porta1 = input.read();
+					System.out.println("Dados recebidos: " + porta1);
 					// Faça o processamento necessário com os dados recebidos do teclado numérico
 				}
 			} catch (IOException e) {

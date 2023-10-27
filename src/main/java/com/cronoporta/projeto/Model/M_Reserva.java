@@ -2,18 +2,27 @@ package com.cronoporta.projeto.Model;
 
 import jakarta.persistence.*;
 
+import java.sql.Date;
+
+
 @Entity
-@Table(name = "reserva")
+@Table(name = "portas")
 public class M_Reserva {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String usuario;
-    private String senha;
-    private String data_entrada;
-    private String data_saida;
-    private Long quarto;
+    private Date data_abertura;
+    private Date data_fechamento;
+    private int sala;
+
+    public int getSala() {
+        return sala;
+    }
+
+    public void setSala(int sala) {
+        this.sala = sala;
+    }
 
     public Long getId() {
         return id;
@@ -23,43 +32,19 @@ public class M_Reserva {
         this.id = id;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public Date getData_abertura() {
+        return data_abertura;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setData_abertura(Date data_abertura) {
+        this.data_abertura = data_abertura;
     }
 
-    public String getSenha() {
-        return senha;
+    public Date getData_fechamento() {
+        return data_fechamento;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getData_entrada() {
-        return data_entrada;
-    }
-
-    public void setData_entrada(String data_entrada) {
-        this.data_entrada = data_entrada;
-    }
-
-    public String getData_saida() {
-        return data_saida;
-    }
-
-    public void setData_saida(String data_saida) {
-        this.data_saida = data_saida;
-    }
-
-    public Long getQuarto() {
-        return quarto;
-    }
-
-    public void setQuarto(Long quarto) {
-        this.quarto = quarto;
+    public void setData_fechamento(Date data_fechamento) {
+        this.data_fechamento = data_fechamento;
     }
 }
