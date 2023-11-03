@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.*;
 public class C_Login {
 
     @GetMapping("/")
-    public String login() {
-        return "Login/login";
+    public String getLogin(HttpSession session){
+        if(session.getAttribute("usuario") != null) {
+            return "redirect:/Home";
+        }else{
+            return "Login/login";
+        }
     }
-
-
     @PostMapping("/")
     @ResponseBody
     public boolean processLogin(@RequestParam("Usuario") String usuario,

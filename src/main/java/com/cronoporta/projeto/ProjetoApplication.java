@@ -51,8 +51,14 @@ public class ProjetoApplication {
 			try {
 				if (input.ready()) {
 					int porta1 = input.read();
+					int porta2 = input.read();
+					int porta3 = input.read();
+					int porta4 = input.read();
 					System.out.println("Dados recebidos: " + porta1);
-					// Faça o processamento necessário com os dados recebidos do teclado numérico
+					System.out.println("Dados recebidos: " + porta2);
+					System.out.println("Dados recebidos: " + porta3);
+					System.out.println("Dados recebidos: " + porta4);
+
 				}
 			} catch (IOException e) {
 				e.printStackTrace();

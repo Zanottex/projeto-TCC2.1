@@ -16,7 +16,7 @@ public class C_Home {
             return "Home/home";
         } else {
             // A sessão não existe, redirecionar para a página de login
-            return "redirect:/";
+            return "redirect:Login/login";
         }
     }
 }
