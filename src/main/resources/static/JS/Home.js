@@ -47,12 +47,17 @@ function alertaSucesso(mensagem){
 }
 
 function addReserva(){
-    let dataReserva = $("#data").val()+' 00:00:00 -0300';
-    let quantidade = $("#qtd").val();
+    let dia = $("#data").val()+' 00:00:00 -0300';
+    let horarioE = $("#horarioE").val();
+    let horarioS = $("#horarioS").val();
+    let sala = $("#sala").val();
 
     $("#listaReservas").prepend('<tr>'+
-        '<td>'+new Date(dataReserva).toLocaleDateString()+'</td>'+
-        '<td>'+quantidade+'</td>'+
-        '<td>'+new Date().toLocaleDateString()+'</td>'+
+        '<td>'+new Date(dia).toLocaleDateString()+'</td>'+
+        '<td>'+horarioE+'</td>'+
+        '<td>'+horarioS+'</td>'+
+        '<td>'+sala+'</td>'+
         '</tr>');
+
+
 }

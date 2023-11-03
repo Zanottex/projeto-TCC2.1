@@ -5,8 +5,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="../../static/JS/Home.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="JS/Home.js" defer></script>
+    <script src="JS/routs.js"></script>
     <title>Home</title>
 </head>
 <body>
@@ -23,24 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Cadastro
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a class="dropdown-item" href="/cadastro/notebooks">Notebooks</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="/cadastro">Usuário</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="/cadastro/software">Software</a>
-                        </li>
-                    </ul>
+                    <a class="nav-link active" aria-current="page" href="/home">Horarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/edit/usuario">Perfil</a>
@@ -70,6 +59,7 @@
                 <table class="table table-striped text-center">
                     <thead id="cabListaReservas">
                     <tr>
+                        <th>Dia</th>
                         <th>Horario de Abertura</th>
                         <th>Horario de Fechar</th>
                         <th>Sala</th>
@@ -84,22 +74,40 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="novaReservaTitle">Nova Horario</h1>
+                            <h1 class="modal-title fs-5" id="novaReservaTitle">Novo Horario</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-12 text-center">
+                                    <span>Dia</span>
                                     <input id="data" class="form-control" type="date"/>
                                 </div>
-                                <div class="col-6">
-                                    <input id="qtd" class="form-control" type="number"/>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 mt-5">
+                                    <span>Horario de Abertura</span>
+                                    <input id="horarioE" class="form-control" type="time"/>
                                 </div>
+                                <div class="col-6 mt-5">
+                                    <span>Horario de fechamento</span>
+                                    <input id="horarioS" class="form-control" type="time"/>
+                                </div>
+                            </div>
+                            <div class="form-floating mt-5">
+                                <select style="border: none; border-bottom: solid 2px #0d009c; border-radius: 0" class="form-select" id="sala" aria-label="Floating label select example">
+                                    <option selected value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                                <label for="sala">Selecione uma sala</label>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" onclick="addReserva()">Salvar</button>
+                            <a type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</a>
+                            <a type="button" class="text-start btn btn-primary" onclick="addReserva()">Salvar</a>
                         </div>
                     </div>
                 </div>

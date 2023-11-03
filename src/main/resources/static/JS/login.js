@@ -15,7 +15,7 @@ function enviarlogin(){
     if(data){
     window.location.href="/home";
     }else{
-    alert("Porcaria")
+    alert("Senha ou usuario inválidos")
     }
     },
     error: function(data){
