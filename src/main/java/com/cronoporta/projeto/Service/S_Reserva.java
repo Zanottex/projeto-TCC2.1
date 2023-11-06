@@ -5,6 +5,8 @@ import com.cronoporta.projeto.Repository.R_Reserva;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class S_Reserva {
     private static R_Reserva reserva;
@@ -12,24 +14,26 @@ public class S_Reserva {
         this.reserva = reserva;
     }
 
-    public static String reservas(int sala, String data_abertura, String data_fechamento){
+    public static String reservas(int id_porta, LocalDateTime data_abertura, LocalDateTime  data_fechamento){
         boolean podeSalvar = true;
         String mensagem = "";
-        if (S_Generico.textoEstaVazio(String.valueOf(sala))) {
+        if (S_Generico.textoEstaVazio(String.valueOf(id_porta))) {
             podeSalvar = false;
             mensagem += "A sala precisa ser preenchida.";
         }
-        if (S_Generico.textoEstaVazio(data_abertura)) {
+        if (S_Generico.textoEstaVazio(String.valueOf(data_abertura))) {
             podeSalvar = false;
-            mensagem += "A data precisa ser informada.";
+            mensagem += "O horario de abertura precisa ser informada.";
         }
-        if (S_Generico.textoEstaVazio(data_fechamento)) {
+        if (S_Generico.textoEstaVazio(String.valueOf(data_fechamento))) {
             podeSalvar = false;
-            mensagem += "A data precisa ser informada.";
+            mensagem += "O horario de fechamento precisa ser informada.";
         }
         if (podeSalvar) {
             M_Reserva m_reserva = new M_Reserva();
-
+            m_reserva.setData_abertura(data_abertura);
+            m_reserva.setData_fechamento(data_fechamento);
+            m_reserva.setid_porta(id_porta);
             try {
                 reserva.save(m_reserva);
                 mensagem += "Deu bom";

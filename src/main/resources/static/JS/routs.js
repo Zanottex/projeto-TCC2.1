@@ -7,6 +7,5 @@ function controleRotasGet(url){
             $.get(url,function(data){
             });
             break;
-
     }
 }

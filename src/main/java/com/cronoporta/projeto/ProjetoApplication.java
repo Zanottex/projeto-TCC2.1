@@ -1,6 +1,7 @@
 package com.cronoporta.projeto;
 
-import org.springframework.boot.SpringApplication;
+import com.cronoporta.projeto.Service.S_Arduino;
+import  org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.fazecast.jSerialComm.*;
 
@@ -50,14 +51,11 @@ public class ProjetoApplication {
 		while (true) {
 			try {
 				if (input.ready()) {
-					int porta1 = input.read();
-					int porta2 = input.read();
-					int porta3 = input.read();
-					int porta4 = input.read();
-					System.out.println("Dados recebidos: " + porta1);
-					System.out.println("Dados recebidos: " + porta2);
-					System.out.println("Dados recebidos: " + porta3);
-					System.out.println("Dados recebidos: " + porta4);
+					S_Arduino s_arduino = new S_Arduino();
+					int porta = input.read();
+					int ativo = input.read();
+//					s_arduino.setporta();
+
 
 				}
 			} catch (IOException e) {

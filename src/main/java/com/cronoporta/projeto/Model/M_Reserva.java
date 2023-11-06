@@ -2,26 +2,26 @@ package com.cronoporta.projeto.Model;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 
 @Entity
-@Table(name = "portas")
+@Table(name = "reservas")
 public class M_Reserva {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date data_abertura;
-    private Date data_fechamento;
-    private int sala;
+    private LocalDateTime data_abertura;
+    private LocalDateTime data_fechamento;
+    private int id_porta;
 
-    public int getSala() {
-        return sala;
+    public int getid_porta() {
+        return id_porta;
     }
 
-    public void setSala(int sala) {
-        this.sala = sala;
+    public void setid_porta(int id_porta) {
+        this.id_porta = id_porta;
     }
 
     public Long getId() {
@@ -32,19 +32,19 @@ public class M_Reserva {
         this.id = id;
     }
 
-    public Date getData_abertura() {
+    public LocalDateTime getData_abertura() {
         return data_abertura;
     }
 
-    public void setData_abertura(Date data_abertura) {
+    public void setData_abertura(LocalDateTime data_abertura) {
         this.data_abertura = data_abertura;
     }
 
-    public Date getData_fechamento() {
+    public LocalDateTime getData_fechamento() {
         return data_fechamento;
     }
 
-    public void setData_fechamento(Date data_fechamento) {
+    public void setData_fechamento(LocalDateTime data_fechamento) {
         this.data_fechamento = data_fechamento;
     }
 }

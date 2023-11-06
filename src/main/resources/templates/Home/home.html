@@ -59,7 +59,7 @@
                 <table class="table table-striped text-center">
                     <thead id="cabListaReservas">
                     <tr>
-                        <th>Dia</th>
+<!--                        <th>Dia</th>-->
                         <th>Horario de Abertura</th>
                         <th>Horario de Fechar</th>
                         <th>Sala</th>
@@ -79,19 +79,13 @@
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-12 text-center">
-                                    <span>Dia</span>
-                                    <input id="data" class="form-control" type="date"/>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-6 mt-5">
                                     <span>Horario de Abertura</span>
-                                    <input id="horarioE" class="form-control" type="time"/>
+                                    <input id="horarioE" class="form-control" type="datetime-local"/>
                                 </div>
                                 <div class="col-6 mt-5">
                                     <span>Horario de fechamento</span>
-                                    <input id="horarioS" class="form-control" type="time"/>
+                                    <input id="horarioS" class="form-control" type="datetime-local"/>
                                 </div>
                             </div>
                             <div class="form-floating mt-5">
@@ -107,7 +101,7 @@
                         </div>
                         <div class="modal-footer">
                             <a type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</a>
-                            <a type="button" class="text-start btn btn-primary" onclick="addReserva()">Salvar</a>
+                            <a type="button" id="" class="text-start btn btn-primary" onclick="addReserva()">Salvar</a>
                         </div>
                     </div>
                 </div>

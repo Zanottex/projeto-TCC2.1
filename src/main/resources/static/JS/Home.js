@@ -12,7 +12,7 @@ $('a').click(function(event){
 $('.navbar-brand').off('click');
 
 function gerarSwal(urlSucesso){
-    const swalWithBootstrapButtons = Swal.mixin({
+    const swalWithBootstrapButtons = swal.mixin({
         customClass: {
             confirmButton: 'btn btn-success me-2',
             cancelButton: 'btn btn-danger ms-2'
@@ -47,17 +47,31 @@ function alertaSucesso(mensagem){
 }
 
 function addReserva(){
-    let dia = $("#data").val()+' 00:00:00 -0300';
     let horarioE = $("#horarioE").val();
     let horarioS = $("#horarioS").val();
     let sala = $("#sala").val();
 
-    $("#listaReservas").prepend('<tr>'+
-        '<td>'+new Date(dia).toLocaleDateString()+'</td>'+
-        '<td>'+horarioE+'</td>'+
-        '<td>'+horarioS+'</td>'+
-        '<td>'+sala+'</td>'+
-        '</tr>');
+    $.ajax({
+           type: "POST",
+           url: "/Reserva",
+           data: {
+               horarioE: horarioE,
+               horarioS: horarioS,
+               sala: sala,
+           },
+            success: function (data){
+               alert("Deu bom");
+               $("#listaReservas").prepend('<tr>'+
+                '<td>'+horarioE+'</td>'+
+                '<td>'+horarioS+'</td>'+
+                '<td>'+sala+'</td>'+
+                '</tr>');
+                }
+            },
+            error: function (){
+               alert("Deu n");
+            }
+        });
 
 
-}
+
