@@ -1,7 +1,68 @@
-
-<body>
-    <div class="container mt-5">
-    Informações da pessoa
+<div>
+    <h1 class="mt-5 mb-3">Editar Usuario</h1>
+    <div class="row">
+        <div class="col-5 mb-3">
+            <div class="input-group has-validation">
+                <span class="input-group-text">@</span>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="nome" placeholder="Nome" required>
+                    <label for="nome">Nome</label>
+                </div>
+                <div class="invalid-feedback">
+                    Por favor informe o nome.
+                </div>
+            </div>
+        </div>
+        <div class="col-7 mb-3">
+            <div class="input-group has-validation">
+                <span class="input-group-text">@</span>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="email" placeholder="e-Mail" required>
+                    <label for="email">e-Mail</label>
+                </div>
+                <div class="invalid-feedback">
+                    Por favor informe o e-mail.
+                </div>
+            </div>
+        </div>
+        <div class="col-3 mb-3">
+            <div class="input-group has-validation">
+                <span class="input-group-text">@</span>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="senhaAtual" placeholder="Senha" required>
+                    <label for="senhaAtual">Senha</label>
+                </div>
+                <div class="invalid-feedback">
+                    Por favor informe a senha atual
+                </div>
+            </div>
+        </div>
+        <div class="col-3 mb-3">
+            <div class="input-group has-validation">
+                <span class="input-group-text">@</span>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="novaSenha" placeholder="novaSenha" required>
+                    <label for="novaSenha">Nova Senha</label>
+                </div>
+                <div class="invalid-feedback">
+                    Por favor informe a uma nova senha
+                </div>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="input-group has-validation">
+                <span class="input-group-text">@</span>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="confSenha" placeholder="confSenha" required>
+                    <label for="confSenha">Confrimar Senha</label>
+                </div>
+                <div class="invalid-feedback">
+                    A nova senha deve ser igua a confirmação de senha!
+                </div>
+            </div>
+        </div>
+        <div class="col-12 text-end">
+            <button id="salvar" class="btn btn-lg btn-primary mt-3">salvar</button>
+        </div>
     </div>
-</body>
-</html>
+</div>

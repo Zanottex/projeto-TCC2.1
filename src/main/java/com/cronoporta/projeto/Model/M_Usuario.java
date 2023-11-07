@@ -10,6 +10,15 @@ public class M_Usuario {
     private Long id;
     private String nome;
     private String senha;
+    private String cpf;
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
     public Long getId() {
         return id;

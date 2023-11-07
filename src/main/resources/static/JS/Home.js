@@ -57,21 +57,30 @@ function addReserva(){
            data: {
                horarioE: horarioE,
                horarioS: horarioS,
-               sala: sala,
+               sala: sala
            },
             success: function (data){
                alert("Deu bom");
+               mensagemSucesso("Deu bom");
                $("#listaReservas").prepend('<tr>'+
                 '<td>'+horarioE+'</td>'+
                 '<td>'+horarioS+'</td>'+
                 '<td>'+sala+'</td>'+
                 '</tr>');
-                }
+
             },
             error: function (){
                alert("Deu n");
             }
         });
-
-
+}
+function mensagemSucesso(mensagem){
+Swal.fire({
+   position: 'top-end',
+   icon: 'success',
+   title: 'Your work has been saved',
+   showConfirmButton: false,
+   timer: 1500
+ })
+ }
 
