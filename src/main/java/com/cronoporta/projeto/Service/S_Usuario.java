@@ -44,6 +44,9 @@ public class S_Usuario {
                     m_usuario.setSenha(novaSenha);
                 }
                 try {
+                    m_usuario.setNome(nome);
+                    m_usuario.setSenha(novaSenha);
+                    m_usuario.setCpf(S_Generico.criptografarCPF(cpf));
                     r_usuario.save(m_usuario);
                     mensagem += "Perfil atualizado com sucesso";
                 }catch (DataIntegrityViolationException e){

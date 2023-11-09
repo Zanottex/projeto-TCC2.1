@@ -60,7 +60,6 @@ function addReserva(){
                sala: sala
            },
             success: function (data){
-               alert("Deu bom");
                mensagemSucesso("Deu bom");
                $("#listaReservas").prepend('<tr>'+
                 '<td>'+horarioE+'</td>'+
@@ -78,7 +77,7 @@ function mensagemSucesso(mensagem){
 Swal.fire({
    position: 'top-end',
    icon: 'success',
-   title: 'Your work has been saved',
+   title: 'Horario Salvo com Sucesso',
    showConfirmButton: false,
    timer: 1500
  })

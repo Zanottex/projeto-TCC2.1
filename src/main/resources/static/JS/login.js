@@ -5,21 +5,33 @@ function enviarlogin(){
     let senha = $("#senha").val();
 
     $.ajax({
-    type: "POST",
-    url: "/",
-    data:{
-        Usuario:Usuario,
-        senha:senha,
-    },
-    success: function(data){
-    if(data){
-    window.location.href="/home";
-    }else{
-    alert("Senha ou usuario inválidos")
-    }
-    },
-    error: function(data){
-        alert("Falha ao tentar realizar o login!")
-    }
+        type: "POST",
+        url: "/",
+        data:{
+            Usuario:Usuario,
+            senha:senha,
+        },
+        success: function(data){
+            if(data){
+                window.location.href="/home";
+            }else{
+                alert("Senha ou usuario inválidos")
+            }
+        },
+        error: function(data){
+            alert("Falha ao tentar realizar o login!")
+        }
     })
 }
+
+$("#Usuario").keyup(function(event){
+    if (event.key === "Enter") {
+        $("#senha").focus();
+    }
+});
+
+$("#senha").keyup(function(event){
+    if (event.key === "Enter") {
+        enviarlogin();
+    }
+});

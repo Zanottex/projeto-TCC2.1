@@ -5,14 +5,19 @@ function controleRotasGet(url){
             break;
         case "/edit/usuario":
             $.get(url,function(data){
-                $(".container").html(data);
-                $("#salvar").click(salvar);
+            $(".container").html(data);
+            $("#salvar").click(salvar);
             });
             break;
         case "/Hominha":
             $.get(url,function(data){
-                $(".container").html(data);
+            $(".container").html(data);
             });
+        break;
+        case "/Portas":
+             $.get(url,function(data){
+             $(".container").html(data);
+             });
         break;
     }
 }

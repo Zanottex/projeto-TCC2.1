@@ -1,7 +1,7 @@
 package com.cronoporta.projeto;
 
 import com.cronoporta.projeto.Service.S_Arduino;
-import  org.springframework.boot.SpringApplication;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.fazecast.jSerialComm.*;
 

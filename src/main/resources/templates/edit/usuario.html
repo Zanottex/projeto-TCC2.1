@@ -5,7 +5,7 @@
             <div class="input-group has-validation">
                 <span class="input-group-text">@</span>
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="nome" placeholder="Nome" required>
+                    <input type="text" class="form-control" id="nome" placeholder="Nome" required th:value="${usuario.nome}">
                     <label for="nome">Nome</label>
                 </div>
                 <div class="invalid-feedback">
@@ -17,8 +17,8 @@
             <div class="input-group has-validation">
                 <span class="input-group-text">@</span>
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="email" placeholder="e-Mail" required>
-                    <label for="email">e-Mail</label>
+                    <input type="text" class="form-control" id="cpf" placeholder="cpf" required th:value="${usuario.cpf}">
+                    <label for="cpf">cpf</label>
                 </div>
                 <div class="invalid-feedback">
                     Por favor informe o e-mail.
@@ -29,7 +29,7 @@
             <div class="input-group has-validation">
                 <span class="input-group-text">@</span>
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="senhaAtual" placeholder="Senha" required>
+                    <input type="password" class="form-control" id="senhaAtual" placeholder="Senha">
                     <label for="senhaAtual">Senha</label>
                 </div>
                 <div class="invalid-feedback">
