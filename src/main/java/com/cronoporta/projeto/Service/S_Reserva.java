@@ -6,6 +6,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 @Service
 public class S_Reserva {
@@ -33,7 +34,7 @@ public class S_Reserva {
             M_Reserva m_reserva = new M_Reserva();
             m_reserva.setData_abertura(data_abertura);
             m_reserva.setData_fechamento(data_fechamento);
-            m_reserva.setid_porta(id_porta);
+            m_reserva.setId_porta(id_porta);
             try {
                 reserva.save(m_reserva);
                 mensagem += "Deu bom";
@@ -42,5 +43,9 @@ public class S_Reserva {
             }
         }
         return mensagem;
+    }
+
+    public static ArrayList<M_Reserva> listReservas(){
+        return reserva.listReservas();
     }
 }

@@ -5,21 +5,18 @@
         <hr>
         <section id="Portas">
             <table class="table table-striped text-center">
-                <thead id="cabListaReservas">
+                <thead id="cabListaPorta">
                 <tr>
                         <th class="col-4">Sala</th>
                         <th class="col-4">Status</th>
-                    <th>
-                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal"
-                                data-bs-target="#abrir">Abrir
-                        </button>
-                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#fechar">Fechar
-                        </button>
-                    </th>
+                        <th class="col-4">botões</th>
                 </tr>
                 </thead>
                 <tbody id="listaPortas">
+                <tr th:each="porta : ${portas}">
+                    <td th:text="${porta.sala}"></td>
+                    <td th:text="${porta.ativo}"></td>
+                </tr>
                 </tbody>
             </table>
         </section>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -71,10 +71,15 @@
                         <!--                        <th>Dia</th>-->
                         <th>Horario de Abertura</th>
                         <th>Horario de Fechar</th>
-                        <th>Sala</th>
+                        <th>Porta</th>
                     </tr>
                     </thead>
                     <tbody id="listaReservas">
+                    <tr th:each="reserva : ${reservas}">
+                        <td th:text="${reserva.data_abertura}"></td>
+                        <td th:text="${reserva.data_fechamento}"></td>
+                        <td th:text="${reserva.id_porta}"></td>
+                    </tr>
                     </tbody>
                 </table>
             </section>

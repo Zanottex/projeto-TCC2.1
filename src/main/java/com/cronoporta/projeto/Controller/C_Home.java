@@ -17,6 +17,7 @@ public class C_Home {
     public String home(HttpSession session, Model model) {
         if (session.getAttribute("usuario") != null) {
             model.addAttribute("usuario",session.getAttribute("usuario"));
+            model.addAttribute("reservas",S_Reserva.listReservas());
             return "Home/home";
         } else {
             // A sessão não existe, redirecionar para a página de login
@@ -30,9 +31,10 @@ public class C_Home {
                                  @RequestParam("horarioS") LocalDateTime data_fechamento,
                                  @RequestParam("sala") int sala,
                                  HttpSession session,
-                                 HttpServletRequest request) {
+                                 HttpServletRequest request,
+                                 Model model) {
 
-        session.setAttribute("reserva", S_Reserva.reservas(sala, data_abertura, data_fechamento ));
+        session.setAttribute("reserva", S_Reserva.reservas(sala, data_abertura, data_fechamento));
         if(session.getAttribute("reserva") != null) {
             session.setAttribute("sucesso", "Reserva realizada com sucesso!");
             request.setAttribute("reserva", session.getAttribute("reserva"));

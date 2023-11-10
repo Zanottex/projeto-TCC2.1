@@ -32,8 +32,7 @@ public class C_Perfil {
                                       @RequestParam("senhaAtual") String senhaAtual,
                                       @RequestParam("novaSenha") String novaSenha,
                                       @RequestParam("confSenha") String confSenha,
-                                      @RequestParam("cpf") String cpf,
-                                      HttpSession session){
+                                      @RequestParam("cpf") String cpf){
 
         return S_Usuario.updateUsuario(nome,senhaAtual,novaSenha,confSenha,cpf);
     }

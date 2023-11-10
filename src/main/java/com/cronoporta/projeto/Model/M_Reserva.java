@@ -16,14 +16,6 @@ public class M_Reserva {
     private LocalDateTime data_fechamento;
     private int id_porta;
 
-    public int getid_porta() {
-        return id_porta;
-    }
-
-    public void setid_porta(int id_porta) {
-        this.id_porta = id_porta;
-    }
-
     public Long getId() {
         return id;
     }
@@ -46,5 +38,13 @@ public class M_Reserva {
 
     public void setData_fechamento(LocalDateTime data_fechamento) {
         this.data_fechamento = data_fechamento;
+    }
+
+    public int getId_porta() {
+        return id_porta;
+    }
+
+    public void setId_porta(int id_porta) {
+        this.id_porta = id_porta;
     }
 }
