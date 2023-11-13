@@ -7,10 +7,10 @@ import jakarta.persistence.*;
 public class M_Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String nome;
     private String senha;
-    private String cpf;
+    private String  cpf;
 
     public String getCpf() {
         return cpf;
@@ -20,11 +20,11 @@ public class M_Usuario {
         this.cpf = cpf;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

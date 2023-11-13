@@ -1,6 +1,7 @@
 package com.cronoporta.projeto.Service;
 
 import com.cronoporta.projeto.Model.M_Reserva;
+import com.cronoporta.projeto.Model.M_Resposta;
 import com.cronoporta.projeto.Repository.R_Reserva;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -44,8 +45,19 @@ public class S_Reserva {
         }
         return mensagem;
     }
-
+    public static boolean deletarHorario(long id){
+        boolean deletou;
+        try {
+            reserva.deleteById(id);
+            deletou = true;
+        }catch (DataIntegrityViolationException e){
+            deletou = false;
+        }
+        return deletou;
+    }
     public static ArrayList<M_Reserva> listReservas(){
         return reserva.listReservas();
     }
+
+
 }

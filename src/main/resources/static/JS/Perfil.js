@@ -1,15 +1,15 @@
 
 
 function updatelogin(){
-    let nome = $("#Usuario").val();
-    let cpf = $("cpf").val();
+    let nome = $("#nome").val();
+    let cpf = $("#cpf").val();
     let senha = $("#senha").val();
     let novaSenha = $("#novaSenha").val();
     let confSenha = $("#confSenha").val();
 
     $.ajax({
         type: "POST",
-        url: "/",
+        url: "/edit/usuario",
         data:{
             nome:nome,
             senha:senha,
@@ -19,13 +19,13 @@ function updatelogin(){
         },
         success: function(data){
             if(data){
-                alertaSucesso("Deu Bom")
+                alertaSucesso("Dados do usuario atualizados com sucesso.")
             }else{
                 alert("Senha ou usuario inválidos")
             }
         },
         error: function(data){
-            alert("Falha ao tentar realizar o login!")
+            alert("Deu Ruim!")
         }
     })
 }

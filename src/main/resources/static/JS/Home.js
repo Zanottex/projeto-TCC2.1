@@ -62,9 +62,11 @@ function addReserva(){
             success: function (data){
                mensagemSucesso("Deu bom");
                $("#listaReservas").prepend('<tr>'+
+                '<td>'+id+'</td>'+
                 '<td>'+horarioE+'</td>'+
                 '<td>'+horarioS+'</td>'+
                 '<td>'+sala+'</td>'+
+                '<td><buttontype="button" id="deletar" class="btn btn-sm btn-danger">-</button></td>'+
                 '</tr>');
 
             },
@@ -82,4 +84,24 @@ Swal.fire({
    timer: 1500
  })
  }
+
+ $("#deletar").click(deletarHorario);
+
+function deletarHorario(){
+    let id = $("#id").val();
+     $.ajax({
+               type: "POST",
+               url: "/deletar",
+               data: {
+                   id: id,
+               },
+                success: function (data){
+                   mensagemSucesso("Deletado com sucesso");
+
+                },
+                error: function (){
+                   alert("Deu n");
+                }
+            });
+}
 

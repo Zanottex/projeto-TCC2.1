@@ -14,6 +14,8 @@
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="JS/Home.js" defer></script>
+    <script src="JS/Perfil.js" defer></script>
+    <script src="JS/Porta.js" defer></script>
     <script src="JS/routs.js"></script>
     <title>Home</title>
 </head>
@@ -69,16 +71,21 @@
                     <thead id="cabListaReservas">
                     <tr>
                         <!--                        <th>Dia</th>-->
+                        <th></th>
                         <th>Horario de Abertura</th>
                         <th>Horario de Fechar</th>
                         <th>Porta</th>
+                        <th>Deletar</th>
                     </tr>
                     </thead>
                     <tbody id="listaReservas">
                     <tr th:each="reserva : ${reservas}">
-                        <td th:text="${reserva.data_abertura}"></td>
-                        <td th:text="${reserva.data_fechamento}"></td>
+                        <td th:text="${reserva.id}"></td>
+                        <td th:text="${#temporals.format(reserva.data_abertura, 'dd/MM/yyyy HH:mm')}"></td>
+                        <td th:text="${#temporals.format(reserva.data_fechamento, 'dd/MM/yyyy HH:mm')}"></td>
                         <td th:text="${reserva.id_porta}"></td>
+                        <td> <button type="button" id="deletar" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#novaReserva">-</button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

@@ -6,7 +6,7 @@ function controleRotasGet(url){
         case "/edit/usuario":
             $.get(url,function(data){
             $(".container").html(data);
-            $("#salvar").click(salvar);
+            $("#salvar").click(updatelogin);
             });
             break;
         case "/Hominha":
@@ -17,6 +17,7 @@ function controleRotasGet(url){
         case "/Portas":
              $.get(url,function(data){
              $(".container").html(data);
+
              });
         break;
     }

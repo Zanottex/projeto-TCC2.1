@@ -29,11 +29,11 @@ public class C_Perfil {
     @PostMapping("/edit/usuario")
     @ResponseBody
     public M_Resposta posteditUsuario(@RequestParam("nome") String nome,
-                                      @RequestParam("senhaAtual") String senhaAtual,
+                                      @RequestParam("senha") String senha,
                                       @RequestParam("novaSenha") String novaSenha,
                                       @RequestParam("confSenha") String confSenha,
                                       @RequestParam("cpf") String cpf){
 
-        return S_Usuario.updateUsuario(nome,senhaAtual,novaSenha,confSenha,cpf);
+        return S_Usuario.updateUsuario(nome,senha,novaSenha,confSenha,cpf);
     }
 }

@@ -9,13 +9,14 @@
                 <tr>
                         <th class="col-4">Sala</th>
                         <th class="col-4">Status</th>
-                        <th class="col-4">botões</th>
+                        <th class="col-4">Ações</th>
                 </tr>
                 </thead>
                 <tbody id="listaPortas">
                 <tr th:each="porta : ${portas}">
                     <td th:text="${porta.sala}"></td>
                     <td th:text="${porta.ativo}"></td>
+                    <td> <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#novaPorta">+</button></td>
                 </tr>
                 </tbody>
             </table>

@@ -1,5 +1,6 @@
 package com.cronoporta.projeto.Controller;
 
+import com.cronoporta.projeto.Model.M_Resposta;
 import com.cronoporta.projeto.Service.S_Reserva;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -31,8 +32,8 @@ public class C_Home {
                                  @RequestParam("horarioS") LocalDateTime data_fechamento,
                                  @RequestParam("sala") int sala,
                                  HttpSession session,
-                                 HttpServletRequest request,
-                                 Model model) {
+                                 HttpServletRequest request
+                                 ) {
 
         session.setAttribute("reserva", S_Reserva.reservas(sala, data_abertura, data_fechamento));
         if(session.getAttribute("reserva") != null) {
@@ -42,5 +43,11 @@ public class C_Home {
         } else {
             return "redirect:/?error";
         }
+    }
+
+    @PostMapping("/deletar")
+    @ResponseBody
+    public boolean deletarHorario(@RequestParam("id") int id){
+        return S_Reserva.deletarHorario(id);
     }
 }
