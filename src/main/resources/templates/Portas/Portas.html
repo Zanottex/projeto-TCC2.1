@@ -2,6 +2,7 @@
 <div class="row mt-5">
     <div class="col-12 spacer">
         <h1 class="text-center">Portas</h1>
+         <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#novaPorta">+</button>
         <hr>
         <section id="Portas">
             <table class="table table-striped text-center">
@@ -16,7 +17,7 @@
                 <tr th:each="porta : ${portas}">
                     <td th:text="${porta.sala}"></td>
                     <td th:text="${porta.ativo}"></td>
-                    <td> <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#novaPorta">+</button></td>
+                    <td><button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#novaPorta">+</button></td>
                 </tr>
                 </tbody>
             </table>

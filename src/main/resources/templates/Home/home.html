@@ -84,7 +84,7 @@
                         <td th:text="${#temporals.format(reserva.data_abertura, 'dd/MM/yyyy HH:mm')}"></td>
                         <td th:text="${#temporals.format(reserva.data_fechamento, 'dd/MM/yyyy HH:mm')}"></td>
                         <td th:text="${reserva.id_porta}"></td>
-                        <td> <button type="button" id="deletar" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#novaReserva">-</button>
+                        <td> <a type="button" onclick="deletarHorario(reserva.id)" class="btn btn-sm btn-danger">-</a>
                         </td>
                     </tr>
                     </tbody>
@@ -113,17 +113,17 @@
                             <div class="form-floating mt-5">
                                 <select style="border: none; border-bottom: solid 2px #0d009c; border-radius: 0"
                                         class="form-select" id="sala" aria-label="Floating label select example">
-                                    <option selected value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
+                                    <option selected value="1">Sala 1</option>
+                                    <option value="2">Sala 2</option>
+                                    <option value="3">Sala 3</option>
+                                    <option value="4">Laboratório de informática</option>
+                                    <option value="5">Laboratório de química</option>
                                 </select>
                                 <label for="sala">Selecione uma sala</label>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</a>
+                            <a type="button" class="btn btn-danger text-start" data-bs-dismiss="modal">Cancelar</a>
                             <a type="button" id="" class="text-start btn btn-primary" onclick="addReserva()">Salvar</a>
                         </div>
                     </div>

@@ -15,12 +15,14 @@ public class S_Usuario {
 
     public static M_Usuario checarLogin(String nome, String senha) {
         M_Usuario m_usuario = r_usuario.findByUsuarioESenha(nome,senha);
-        m_usuario.setCpf(S_Generico.descriptografarCPF(m_usuario.getCpf()));
+        String cpf2 = S_Generico.descriptografarCPF(m_usuario.getCpf());
+//        String senha2 = S_Generico.descriptografarCPF(m_usuario.getSenha());
+        m_usuario.setCpf(cpf2);
+//        m_usuario.setSenha(senha2);
         return m_usuario;
-
     }
 
-    public static M_Resposta updateUsuario(String nome, String senha,String novaSenha,String confSenha, String cpf  ){
+    public static M_Resposta updateUsuario(String nome, String senha, String novaSenha,String confSenha, String cpf  ){
         boolean podeEnviar = false;
         String mensagem = "";
 
@@ -36,7 +38,10 @@ public class S_Usuario {
             }
             if(S_Generico.textoEstaVazio(cpf)){
                 podeEnviar = false;
-                mensagem += "O nome precisa ser preenchido";
+                mensagem += "O cpf precisa ser preenchido";
+            }
+            if(S_Generico.textoEstaVazio(novaSenha)){
+                novaSenha = senha;
             }
             if(!novaSenha.equals(confSenha) && !S_Generico.textoEstaVazio(novaSenha)){
                 podeEnviar = false;
@@ -50,7 +55,7 @@ public class S_Usuario {
                 }
                 try {
                     m_usuario.setNome(nome);
-                    m_usuario.setSenha(novaSenha);
+                    m_usuario.setSenha(S_Generico.criptografarCPF(novaSenha));
                     m_usuario.setCpf(S_Generico.criptografarCPF(cpf));
                     m_usuario.setId(1);
                     r_usuario.save(m_usuario);

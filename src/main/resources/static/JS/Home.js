@@ -85,7 +85,7 @@ Swal.fire({
  })
  }
 
- $("#deletar").click(deletarHorario);
+
 
 function deletarHorario(){
     let id = $("#id").val();

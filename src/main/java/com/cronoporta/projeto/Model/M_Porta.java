@@ -9,7 +9,7 @@ public class M_Porta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long sala;
+    private String sala;
     private boolean ativo;
 
     public Long getId() {
@@ -20,11 +20,11 @@ public class M_Porta {
         this.id = id;
     }
 
-    public Long getSala() {
+    public String getSala() {
         return sala;
     }
 
-    public void setSala(Long sala) {
+    public void setSala(String sala) {
         this.sala = sala;
     }
 
