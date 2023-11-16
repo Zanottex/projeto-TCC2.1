@@ -47,7 +47,7 @@ public class C_Home {
 
     @PostMapping("/deletar")
     @ResponseBody
-    public boolean deletarHorario(@RequestParam("id") int id){
-        return S_Reserva.deletarHorario(id);
+    public boolean deletarHorario(@RequestParam("idHorario") int idHorario){
+        return S_Reserva.deletarHorario(idHorario);
     }
 }

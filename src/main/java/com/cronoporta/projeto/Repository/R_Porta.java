@@ -9,6 +9,6 @@ import java.util.ArrayList;
 
 @Repository
 public interface R_Porta extends JpaRepository<M_Porta, Long> {
-    @Query(value = "select * from portas", nativeQuery = true)
+    @Query(value = "select * from portas order by id", nativeQuery = true)
     ArrayList<M_Porta> listPortas();
 }

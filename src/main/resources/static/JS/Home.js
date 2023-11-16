@@ -60,18 +60,10 @@ function addReserva(){
                sala: sala
            },
             success: function (data){
-               mensagemSucesso("Deu bom");
-               $("#listaReservas").prepend('<tr>'+
-                '<td>'+id+'</td>'+
-                '<td>'+horarioE+'</td>'+
-                '<td>'+horarioS+'</td>'+
-                '<td>'+sala+'</td>'+
-                '<td><buttontype="button" id="deletar" class="btn btn-sm btn-danger">-</button></td>'+
-                '</tr>');
-
+               mensagemSucesso("Horario Salvo com Sucesso.");
             },
             error: function (){
-               alert("Deu n");
+               mensagemErro("Houve um problema ao salvar o Horario.");
             }
         });
 }
@@ -79,28 +71,38 @@ function mensagemSucesso(mensagem){
 Swal.fire({
    position: 'top-end',
    icon: 'success',
-   title: 'Horario Salvo com Sucesso',
+   title: mensagem,
    showConfirmButton: false,
    timer: 1500
  })
  }
 
+ function mensagemErro(mensagem){
+ Swal.fire({
+    position: 'top-end',
+    icon: 'error',
+    title: mensagem,
+    showConfirmButton: false,
+    timer: 1500
+  })
+  }
 
+$("#deletar").click(deletarHorario);
 
 function deletarHorario(){
-    let id = $("#id").val();
+    let idHorario = $("#idHorario").val();
      $.ajax({
                type: "POST",
                url: "/deletar",
                data: {
-                   id: id,
+                   idHorario: idHorario,
                },
                 success: function (data){
-                   mensagemSucesso("Deletado com sucesso");
+                   mensagemSucesso("Deletado com sucesso.");
 
                 },
                 error: function (){
-                   alert("Deu n");
+                   mensagemErro("Não foi possivel deletar o horario.")
                 }
             });
 }

@@ -12,6 +12,7 @@
                     <thead id="cabListaReservas">
                     <tr>
                         <!--                        <th>Dia</th>-->
+                        <th></th>
                         <th>Horario de Abertura</th>
                         <th>Horario de Fechar</th>
                         <th>Porta</th>
@@ -20,11 +21,11 @@
                     </thead>
                     <tbody id="listaReservas">
                         <tr th:each="reserva : ${reservas}">
-                            <td id="id" th:text="${reserva.id}"></td>
+                            <td id="idHorario" th:text="${reserva.id}"></td>
                             <td th:text="${#temporals.format(reserva.data_abertura, 'dd/MM/yyyy HH:mm')}"></td>
                             <td th:text="${#temporals.format(reserva.data_fechamento, 'dd/MM/yyyy HH:mm')}"></td>
                             <td th:text="${reserva.id_porta}"></td>
-                            <td> <a type="button" onclick="deletarHorario(reserva.id)" class="btn btn-sm btn-danger">-</a>
+                            <td> <a type="button" id="deletar" class="btn btn-sm btn-danger">-</a>
                             </td>
                         </tr>
                     </tbody>

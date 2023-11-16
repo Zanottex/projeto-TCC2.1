@@ -2,13 +2,13 @@ function controleRotasGet(url){
     switch(url){
         case "/logout":
             gerarSwal(url);
-            break;
+        break;
         case "/edit/usuario":
             $.get(url,function(data){
             $(".container").html(data);
             $("#salvar").click(updatelogin);
             });
-            break;
+        break;
         case "/Hominha":
             $.get(url,function(data){
             $(".container").html(data);
@@ -17,8 +17,9 @@ function controleRotasGet(url){
         case "/Portas":
              $.get(url,function(data){
              $(".container").html(data);
-
              });
         break;
+
+
     }
 }

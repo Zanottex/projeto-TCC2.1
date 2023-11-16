@@ -18,8 +18,7 @@ public class C_Portas {
     @GetMapping("/Portas")
     public String getPortas(HttpServletRequest request, HttpSession session, Model model){
         if(request.getHeader("Referer") != null){
-            Object portas = session.getAttribute("portas");
-            model.addAttribute("portas",portas);
+            model.addAttribute("portas",S_Porta.listPorta());
             return "Portas/Portas";
         }else{
             return "redirect:/";

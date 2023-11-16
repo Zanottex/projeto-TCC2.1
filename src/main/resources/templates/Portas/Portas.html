@@ -2,22 +2,25 @@
 <div class="row mt-5">
     <div class="col-12 spacer">
         <h1 class="text-center">Portas</h1>
-         <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#novaPorta">+</button>
         <hr>
         <section id="Portas">
             <table class="table table-striped text-center">
                 <thead id="cabListaPorta">
                 <tr>
-                        <th class="col-4">Sala</th>
-                        <th class="col-4">Status</th>
-                        <th class="col-4">Ações</th>
+                        <th></th>
+                        <th>Sala</th>
+                        <th>Status</th>
+                        <th>Ações</th>
                 </tr>
                 </thead>
                 <tbody id="listaPortas">
                 <tr th:each="porta : ${portas}">
+                    <td th:text="${porta.id}"></td>
                     <td th:text="${porta.sala}"></td>
-                    <td th:text="${porta.ativo}"></td>
-                    <td><button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#novaPorta">+</button></td>
+                    <td th:if="${porta.ativo == true} ">Aberta</td>
+                    <td th:if="${porta.ativo == false}">Fechada</td>
+                    <td th:if="${porta.ativo == true}"><button type="button" class="btn btn-sm btn-danger">Fechar</button></td>
+                    <td th:if="${porta.ativo == false}"><button type="button" class="btn btn-sm btn-success">Abrir</button></td>
                 </tr>
                 </tbody>
             </table>
