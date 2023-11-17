@@ -18,12 +18,10 @@ public class S_Porta {
         return r_porta.listPortas();
     }
 
-    public static String abrirPortas(boolean abrir, long id, String sala){
-        M_Porta m_porta = new M_Porta();
+    public static String abrirPortas(long id){
+        M_Porta m_porta = r_porta.findPorta(id);
+        m_porta.setAtivo(!m_porta.isAtivo());
         String mensagem ="";
-        m_porta.setAtivo(abrir);
-        m_porta.setId(id);
-        m_porta.setSala(sala);
         try{
             r_porta.save(m_porta);
             mensagem += "Deu Bom";

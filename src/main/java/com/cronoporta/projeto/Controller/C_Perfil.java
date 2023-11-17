@@ -1,6 +1,7 @@
 package com.cronoporta.projeto.Controller;
 
 import com.cronoporta.projeto.Model.M_Resposta;
+import com.cronoporta.projeto.Model.M_Usuario;
 import com.cronoporta.projeto.Service.S_Usuario;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -19,8 +20,7 @@ public class C_Perfil {
                                  HttpSession session,
                                  Model model){
         if (request.getHeader("Referer") != null){
-            Object usuario = session.getAttribute("usuario");
-            model.addAttribute("usuario",usuario);
+            model.addAttribute("usuario",session.getAttribute("usuario"));
             return "/edit/usuario";
         }else{
             return "redirect:/";

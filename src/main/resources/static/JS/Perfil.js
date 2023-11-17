@@ -1,5 +1,3 @@
-
-
 function updatelogin(){
     let nome = $("#nome").val();
     let cpf = $("#cpf").val();

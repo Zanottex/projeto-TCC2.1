@@ -16,7 +16,16 @@ function controleRotasGet(url){
         break;
         case "/Portas":
              $.get(url,function(data){
-             $(".container").html(data);
+                $(".container").html(data);
+                $(".a").click(function(){
+                    event.preventDefault();
+                    $.get($(this).attr("href"),function(data){
+                        alert(data.mensagem);
+                        if(data.sucesso){
+                            //atualiza os butao
+                        }
+                    });
+                })
              });
         break;
 

@@ -1,13 +1,17 @@
-$('a').click(function(event){
-    if(!$(this).hasClass('dropdown-toggle')){
-        event.preventDefault();
-        if(!$(this).hasClass('btn')){
-            $('a').removeClass('active disabled');
-            $(this).addClass('active disabled');
+function desabilitaA(){
+    $('a').click(function(event){
+        if(!$(this).hasClass('dropdown-toggle')){
+            event.preventDefault();
+            if(!$(this).hasClass('btn')){
+                $('a').removeClass('active disabled');
+                $(this).addClass('active disabled');
+            }
+            controleRotasGet($(this).attr("href"));
         }
-        controleRotasGet($(this).attr("href"));
-    }
-});
+    });
+}
+
+desabilitaA();
 
 $('.navbar-brand').off('click');
 
