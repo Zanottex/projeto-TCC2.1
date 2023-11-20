@@ -1,16 +1,12 @@
 package com.cronoporta.projeto.Controller;
 
+import com.cronoporta.projeto.Model.M_Resposta;
 import com.cronoporta.projeto.Service.S_Reserva;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.time.LocalDateTime;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class C_Hominha {
@@ -24,5 +20,12 @@ public class C_Hominha {
             return "redirect:/";
         }
     }
+
+    @PostMapping("/deletar")
+    @ResponseBody
+    public M_Resposta botoes(@RequestParam("idHorario") long id){
+        return S_Reserva.deletarHorario(id);
+    }
+
 
 }

@@ -20,13 +20,14 @@
                     </tr>
                     </thead>
                     <tbody id="listaReservas">
-                        <tr th:each="reserva : ${reservas}">
+                        <tr th:id="${'excloi'+reserva.id}" th:each="reserva : ${reservas}">
                             <td id="idHorario" th:text="${reserva.id}"></td>
                             <td th:text="${#temporals.format(reserva.data_abertura, 'dd/MM/yyyy HH:mm')}"></td>
                             <td th:text="${#temporals.format(reserva.data_fechamento, 'dd/MM/yyyy HH:mm')}"></td>
                             <td th:text="${reserva.id_porta}"></td>
-                            <td> <a type="button" id="deletar" class="btn btn-sm btn-danger">-</a>
-                            </td>
+                            <td> <a href="/removerR" class="btn btn-sm btn-danger">-</a></td>
+<!--                            <td><a id="butao" th:value="${reserva.id}" type="button" class="btn a btn-sm btn-danger"-->
+<!--                                   th:href="${'reservaA/'+reserva.id}" >-</a></td>-->
                         </tr>
                     </tbody>
                 </table>

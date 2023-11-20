@@ -16,7 +16,7 @@ public class S_Reserva {
         this.reserva = reserva;
     }
 
-    public static String reservas(int id_porta, LocalDateTime data_abertura, LocalDateTime  data_fechamento){
+    public static M_Resposta reservas(int id_porta, LocalDateTime data_abertura, LocalDateTime  data_fechamento){
         boolean podeSalvar = true;
         String mensagem = "";
         if (S_Generico.textoEstaVazio(String.valueOf(id_porta))) {
@@ -37,24 +37,33 @@ public class S_Reserva {
             m_reserva.setData_fechamento(data_fechamento);
             m_reserva.setId_porta(id_porta);
             try {
-                reserva.save(m_reserva);
+                M_Reserva m_reserva1 = reserva.save(m_reserva);
+                Long novoid = m_reserva1.getId();
                 mensagem += "Deu bom";
             } catch (DataIntegrityViolationException e) {
                 mensagem += "Deu n";
+                podeSalvar = false;
             }
         }
-        return mensagem;
+        return new M_Resposta(podeSalvar,mensagem);
     }
-    public static boolean deletarHorario(long id){
+
+    public static M_Resposta deletarHorario(long id){
+
         boolean deletou;
+        String mensagem = "";
         try {
             reserva.deleteById(id);
             deletou = true;
+            mensagem += "Horario deletado com sucesso!";
         }catch (DataIntegrityViolationException e){
             deletou = false;
+            mensagem += "Houve um problema ao tentar deletar o horario!";
         }
-        return deletou;
+        M_Resposta m_resposta = new M_Resposta(deletou,mensagem);
+        return m_resposta;
     }
+
     public static ArrayList<M_Reserva> listReservas(){
         return reserva.listReservas();
     }

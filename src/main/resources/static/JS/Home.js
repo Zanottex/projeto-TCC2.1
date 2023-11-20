@@ -39,14 +39,27 @@ function gerarSwal(urlSucesso){
     });
 }
 
-function alertaSucesso(mensagem){
-    Swal.fire({
-        position: 'top-end',
-        toast: true,
-        icon: 'success',
-        title: mensagem,
-        showConfirmButton: false,
-        timer: 2000
+function gerarSwal2(urlSucesso,id){
+    const swalWithBootstrapButtons = swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success me-2',
+            cancelButton: 'btn btn-danger ms-2'
+        },
+        buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+        title: 'Deletar?',
+        text: "Você realmente deseja deletar o horario ?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: '<i class="fa-solid fa-thumbs-up"></i> Sim!',
+        cancelButtonText: '<i class="fa-solid fa-thumbs-down"></i> Não!',
+        reverseButtons: false
+    }).then((result) => {
+        if (result.isConfirmed) {
+            deletarHorario(id);
+        }
     });
 }
 
@@ -65,11 +78,16 @@ function addReserva(){
            },
             success: function (data){
                mensagemSucesso("Horario Salvo com Sucesso.");
+               $('#novaReserva').modal('hide');
+               criarLinha(data.id, horarioE, horarioS, sala)
+
             },
             error: function (){
                mensagemErro("Houve um problema ao salvar o Horario.");
             }
+
         });
+
 }
 function mensagemSucesso(mensagem){
 Swal.fire({
@@ -91,10 +109,7 @@ Swal.fire({
   })
   }
 
-$("#deletar").click(deletarHorario);
-
-function deletarHorario(){
-    let idHorario = $("#idHorario").val();
+function deletarHorario(idHorario){
      $.ajax({
                type: "POST",
                url: "/deletar",
@@ -102,8 +117,8 @@ function deletarHorario(){
                    idHorario: idHorario,
                },
                 success: function (data){
-                   mensagemSucesso("Deletado com sucesso.");
-
+                mensagemSucesso("Deletado com sucesso.");
+                $("#excloi"+idHorario).remove();
                 },
                 error: function (){
                    mensagemErro("Não foi possivel deletar o horario.")
@@ -111,3 +126,13 @@ function deletarHorario(){
             });
 }
 
+
+
+function criarLinha(idHorario, horarioE, horarioS, sala){
+    $("#listaReservas").append('<tr>' +
+    '<td>' + idHorario + '</td>' +
+    '<td>' + new Date(horarioE).toLocaleDateString() + '</td>' +
+    '<td>' + new Date(horarioS).toLocaleTimeString() + '</td>' +
+    '<td>' + sala + '</td>' +
+    '</tr>');
+}

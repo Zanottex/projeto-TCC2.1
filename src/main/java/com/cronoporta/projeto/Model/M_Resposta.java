@@ -3,10 +3,25 @@ package com.cronoporta.projeto.Model;
 public class M_Resposta {
     private boolean sucesso;
     private String mensagem;
+    private Long id;
 
-    public M_Resposta(boolean sucesso, String mensagem){
+    public M_Resposta(boolean sucesso, String mensagem) {
         this.mensagem = mensagem;
         this.sucesso = sucesso;
+    }
+
+    public M_Resposta(boolean sucesso, String mensagem, Long id) {
+        this.mensagem = mensagem;
+        this.sucesso = sucesso;
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public boolean isSucesso() {

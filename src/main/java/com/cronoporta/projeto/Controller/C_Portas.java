@@ -5,7 +5,6 @@ import com.cronoporta.projeto.Service.S_Porta;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +23,7 @@ public class C_Portas {
 
     @GetMapping("/PortasA/{id}")
     @ResponseBody
-    public String botoes(@PathVariable("id") int id){
+    public M_Resposta botoes(@PathVariable("id") int id){
         return S_Porta.abrirPortas(id);
     }
 

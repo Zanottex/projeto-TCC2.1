@@ -27,27 +27,18 @@ public class C_Home {
     }
     @PostMapping("/Reserva")
     @ResponseBody
-    public String processReserva(
+    public M_Resposta processReserva(
                                  @RequestParam("horarioE") LocalDateTime data_abertura,
                                  @RequestParam("horarioS") LocalDateTime data_fechamento,
                                  @RequestParam("sala") int sala,
-                                 HttpSession session,
-                                 HttpServletRequest request
+                                 HttpSession session
                                  ) {
-
-        session.setAttribute("reserva", S_Reserva.reservas(sala, data_abertura, data_fechamento));
-        if(session.getAttribute("reserva") != null) {
-            session.setAttribute("sucesso", "Reserva realizada com sucesso!");
-            request.setAttribute("reserva", session.getAttribute("reserva"));
-            return "redirect/reserva";
-        } else {
-            return "redirect:/?error";
+        if(session.getAttribute("usuario") != null) {
+            return S_Reserva.reservas(sala,data_abertura,data_fechamento);
         }
+        return null;
     }
 
-    @PostMapping("/deletar")
-    @ResponseBody
-    public boolean deletarHorario(@RequestParam("idHorario") int idHorario){
-        return S_Reserva.deletarHorario(idHorario);
-    }
+
+
 }

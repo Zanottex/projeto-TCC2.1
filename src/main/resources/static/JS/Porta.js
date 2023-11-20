@@ -2,8 +2,6 @@
 //    let estado = $(this).attr(text);
 //    let estadoP = $("#estadoPorta").text();
 //    if(estado == "Fechar"){
-//    $('.btn').removeClass("btn-danger");
-//    $('.btn').addClass("btn-success");
 //    estado = "Abrir";
 //    estadoP = "Fechada"
 //    }else{
@@ -28,9 +26,9 @@ function abrirPorta(){
         },
         success: function(data){
             if(data){
-                alertaSucesso("Dados do usuario atualizados com sucesso.")
+                mensagemSucesso("Porta fechada com sucesso!")
             }else{
-                alert("Senha ou usuario inválidos")
+                mensagemErro("Houve um problema ao fechar a porta verifique e tente novamente!")
             }
         },
         error: function(data){
@@ -38,3 +36,4 @@ function abrirPorta(){
         }
     })
 }
+

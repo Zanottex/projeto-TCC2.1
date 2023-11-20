@@ -18,18 +18,21 @@ public class S_Porta {
         return r_porta.listPortas();
     }
 
-    public static String abrirPortas(long id){
+    public static M_Resposta abrirPortas(long id){
         M_Porta m_porta = r_porta.findPorta(id);
         m_porta.setAtivo(!m_porta.isAtivo());
         String mensagem ="";
+        boolean sucesso;
         try{
             r_porta.save(m_porta);
             mensagem += "Deu Bom";
+            sucesso = true;
         }catch (DataIntegrityViolationException e){
-
             mensagem += "Deu ruim";
+            sucesso = false;
         }
+        M_Resposta m_resposta = new M_Resposta(sucesso,mensagem);
 
-        return mensagem;
+        return m_resposta;
     }
 }
