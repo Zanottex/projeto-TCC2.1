@@ -27,5 +27,4 @@ public class C_Hominha {
         return S_Reserva.deletarHorario(id);
     }
 
-
 }

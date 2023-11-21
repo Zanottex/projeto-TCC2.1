@@ -131,8 +131,9 @@ function deletarHorario(idHorario){
 function criarLinha(idHorario, horarioE, horarioS, sala){
     $("#listaReservas").append('<tr>' +
     '<td>' + idHorario + '</td>' +
-    '<td>' + new Date(horarioE).toLocaleDateString() + '</td>' +
-    '<td>' + new Date(horarioS).toLocaleTimeString() + '</td>' +
+    '<td>' + new Date(horarioE).toLocaleDateTimeString() + '</td>' +
+    '<td>' + new Date(horarioS).toLocaleDateTimeString() + '</td>' +
     '<td>' + sala + '</td>' +
+    '<td> <a th:href="${/removerR/ + reserva.id}" class="btn btn-sm btn-danger">-</a></td> '+
     '</tr>');
 }

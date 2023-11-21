@@ -14,11 +14,11 @@ public class S_Usuario {
     }
 
     public static M_Usuario checarLogin(String nome, String senha) {
-        M_Usuario m_usuario = r_usuario.findByUsuarioESenha(nome,senha);
-        String cpf2 = S_Generico.descriptografarCPF(m_usuario.getCpf());
-//        String senha2 = S_Generico.descriptografarCPF(m_usuario.getSenha());
-        m_usuario.setCpf(cpf2);
-//        m_usuario.setSenha(senha2);
+        String senha3 = S_Generico.criptografarCPF(senha);
+        M_Usuario m_usuario = r_usuario.findByUsuarioESenha(nome,senha3);
+        m_usuario.setCpf(S_Generico.descriptografarCPF(m_usuario.getCpf()));
+        m_usuario.setSenha(senha);
+
         return m_usuario;
     }
 
