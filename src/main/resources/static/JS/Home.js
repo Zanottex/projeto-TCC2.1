@@ -48,6 +48,7 @@ function gerarSwal2(urlSucesso,id){
         buttonsStyling: false
     })
 
+
     swalWithBootstrapButtons.fire({
         title: 'Deletar?',
         text: "Você realmente deseja deletar o horario ?",
@@ -59,6 +60,31 @@ function gerarSwal2(urlSucesso,id){
     }).then((result) => {
         if (result.isConfirmed) {
             deletarHorario(id);
+        }
+    });
+}
+
+function gerarSwal3(urlSucesso,id){
+    const swalWithBootstrapButtons = swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success me-2',
+            cancelButton: 'btn btn-danger ms-2'
+        },
+        buttonsStyling: false
+    })
+
+
+    swalWithBootstrapButtons.fire({
+        title: 'Deletar?',
+        text: "Você realmente deseja deletar o horario ?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: '<i class="fa-solid fa-thumbs-up"></i> Sim!',
+        cancelButtonText: '<i class="fa-solid fa-thumbs-down"></i> Não!',
+        reverseButtons: false
+    }).then((result) => {
+        if (result.isConfirmed) {
+            deletarHorario2(id);
         }
     });
 }
@@ -119,6 +145,23 @@ function deletarHorario(idHorario){
                 success: function (data){
                 mensagemSucesso("Deletado com sucesso.");
                 $("#excloi"+idHorario).remove();
+                },
+                error: function (){
+                   mensagemErro("Não foi possivel deletar o horario.")
+                }
+            });
+}
+
+function deletarHorario2(idHorario){
+     $.ajax({
+               type: "POST",
+               url: "/deletarSema",
+               data: {
+                   idHorario: idHorario,
+               },
+                success: function (data){
+                mensagemSucesso("Deletado com sucesso.");
+                $("#excloiSema"+idHorario).remove();
                 },
                 error: function (){
                    mensagemErro("Não foi possivel deletar o horario.")

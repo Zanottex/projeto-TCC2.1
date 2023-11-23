@@ -27,4 +27,11 @@ public class C_Hominha {
         return S_Reserva.deletarHorario(id);
     }
 
+
+    @PostMapping("/deletarSema")
+    @ResponseBody
+    public M_Resposta deletarhorariosema(@RequestParam("idHorario") long id){
+        return S_Reserva.deletarHorarioSema(id);
+    }
+
 }
