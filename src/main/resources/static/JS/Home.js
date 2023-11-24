@@ -103,9 +103,16 @@ function addReserva(){
                sala: sala
            },
             success: function (data){
-               mensagemSucesso("Horario Salvo com Sucesso.");
+            if(data.sucesso){
+               mensagemSucesso(data.mensagem);
                $('#novaReserva').modal('hide');
-               criarLinha(data.id, horarioE, horarioS, sala)
+               criarLinha(data.id
+               , horarioE, horarioS, sala)
+               }
+               else{
+               mensagemErro(data.mensagem)
+               $('#novaReserva').modal('hide');
+               }
 
             },
             error: function (){
@@ -172,10 +179,12 @@ function deletarHorario2(idHorario){
 
 
 function criarLinha(idHorario, horarioE, horarioS, sala){
+    let data_aber = new Date(horarioE);
+    let data_fech = new Date(horarioS);
     $("#listaReservas").append('<tr>' +
     '<td>' + idHorario + '</td>' +
-    '<td>' + new Date(horarioE).toLocaleDateTimeString() + '</td>' +
-    '<td>' + new Date(horarioS).toLocaleDateTimeString() + '</td>' +
+    '<td>' + data_aber.toLocaleDateString() + ' '+ data_aber.toLocaleTimeString() + '</td>' +
+    '<td>' + data_fech.toLocaleDateString() + ' '+ data_fech.toLocaleTimeString() + '</td>' +
     '<td>' + sala + '</td>' +
     '<td> <a th:href="${/removerR/ + reserva.id}" class="btn btn-sm btn-danger">-</a></td> '+
     '</tr>');

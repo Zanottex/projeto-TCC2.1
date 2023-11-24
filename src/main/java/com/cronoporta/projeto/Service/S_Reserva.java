@@ -47,13 +47,14 @@ public class S_Reserva {
             m_reserva.setId_porta(id_porta);
             try {
                 M_Reserva m_reserva1 = reserva.save(m_reserva);
-                Long novoid = m_reserva1.getId();
-                mensagem += "Deu bom";
+                mensagem += "Horario Salvo com Sucesso!";
+                return new M_Resposta(podeSalvar,mensagem, (long) m_reserva1.getId());
             } catch (DataIntegrityViolationException e) {
-                mensagem += "Deu n";
+                mensagem += "Houve um problema ao tentar salvar o horario!";
                 podeSalvar = false;
             }
         }
+
         return new M_Resposta(podeSalvar,mensagem);
     }
 
@@ -89,7 +90,7 @@ public class S_Reserva {
             try {
                 M_Reserva m_reserva1 = reserva.save(m_reserva);
                 Long novoid = m_reserva1.getId();
-                mensagem += "Deu bom";
+                mensagem += "Horario Salvo com sucesso!";
             } catch (DataIntegrityViolationException e) {
                 mensagem += "Deu n";
                 podeSalvar = false;

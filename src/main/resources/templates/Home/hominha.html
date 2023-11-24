@@ -1,85 +1,47 @@
-
-    <div class="row mt-5">
-        <div class="col-5 spacer">
-            <div class="d-flex justify-content-between align-items-center">
-                <span></span>
-                <h1 class="text-center">Horarios <Específicos></Específicos></h1>
-                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal"
-                        data-bs-target="#novaReserva">+
-                </button>
-            </div>
-            <hr>
-            <section id="reservas">
-                <table class="table table-striped text-center">
-                    <thead id="cabListaReservas">
-                    <tr>
-                        <!--                        <th>Dia</th>-->
-                        <th></th>
-                        <th>Horario de Abertura</th>
-                        <th>Horario de Fechar</th>
-                        <th>Porta</th>
-                        <th>Deletar</th>
-                    </tr>
-                    </thead>
-                    <tbody id="listaReservas">
-                    <tr th:id="${'excloi'+reserva.id}" th:each="reserva : ${reservas}">
-                        <td id="idHorario" th:text="${reserva.id}"></td>
-                        <td th:text="${#temporals.format(reserva.data_abertura, 'dd/MM/yyyy HH:mm')}"></td>
-                        <td th:text="${#temporals.format(reserva.data_fechamento, 'dd/MM/yyyy HH:mm')}"></td>
-                        <td th:text="${reserva.id_porta}"></td>
-                        <td> <a th:href="${'/removerR/'+ reserva.id}" class="btn btn-sm btn-danger">-</a></td>
-                        <!--                        <td><a id="butao" th:value="${reserva.id}" type="button" class="btn a btn-sm btn-danger"-->
-                        <!--                               th:href="${'/reservaA/'+reserva.id}" >-</a></td>-->
-                    </tr>
-                    </tbody>
-                </table>
-            </section>
-            <!-- Modal -->
-            <div class="modal fade" id="novaReserva" tabindex="-1" aria-labelledby="novaReservaTitle"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="novaReservaTitle">Novo Horario</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-6 mt-5">
-                                    <span>Horario de Abertura</span>
-                                    <input id="horarioE" class="form-control" type="datetime-local"/>
-                                </div>
-                                <div class="col-6 mt-5">
-                                    <span>Horario de fechamento</span>
-                                    <input id="horarioS" class="form-control" type="datetime-local"/>
-                                </div>
-                            </div>
-                            <div class="form-floating mt-5">
-                                <select style="border: none; border-bottom: solid 2px #0d009c; border-radius: 0"
-                                        class="form-select" id="sala" aria-label="Floating label select example">
-                                    <option selected value="1">Sala 1</option>
-                                    <option value="2">Sala 2</option>
-                                    <option value="3">Sala 3</option>
-                                    <option value="4">Laboratório de informática</option>
-                                    <option value="5">Laboratório de química</option>
-                                </select>
-                                <label for="sala">Selecione uma sala</label>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <a type="button" class="btn btn-danger text-start" data-bs-dismiss="modal">Cancelar</a>
-                            <a type="button" class="text-start btn btn-primary" onclick="addReserva()">Salvar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="row mt-5">
+    <div class="col-5 spacer">
+        <div class="d-flex justify-content-between align-items-center">
+            <span></span>
+            <h1 class="text-center">Horarios Específicos
+                <Específicos></Específicos>
+            </h1>
+            <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal"
+                    data-bs-target="#novaReserva">+
+            </button>
         </div>
+        <hr>
+        <section id="reservas">
+            <table class="table table-striped text-center">
+                <thead id="cabListaReservas">
+                <tr>
+                    <!--                        <th>Dia</th>-->
+                    <th></th>
+                    <th>Horario de Abertura</th>
+                    <th>Horario de Fechar</th>
+                    <th>Porta</th>
+                    <th>Deletar</th>
+                </tr>
+                </thead>
+                <tbody id="listaReservas">
+                <tr th:id="${'excloi'+reserva.id}" th:each="reserva : ${reservas}">
+                    <td id="idHorario" th:text="${reserva.id}"></td>
+                    <td th:text="${#temporals.format(reserva.data_abertura, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td th:text="${#temporals.format(reserva.data_fechamento, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td th:text="${reserva.id_porta}"></td>
+                    <td><a th:href="${'/removerR/'+ reserva.id}" class="btn btn-sm btn-danger">-</a></td>
+                    <!--                        <td><a id="butao" th:value="${reserva.id}" type="button" class="btn a btn-sm btn-danger"-->
+                    <!--                               th:href="${'/reservaA/'+reserva.id}" >-</a></td>-->
+                </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
     <div class="col-7 spacer">
         <div class="d-flex justify-content-between align-items-center">
             <span></span>
             <h1 class="text-center">Horarios Semanais</h1>
             <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal"
-                    data-bs-target="#novaReserva">+
+                    data-bs-target="#novaReservaSema">+
             </button>
         </div>
         <hr>
@@ -108,7 +70,7 @@
                     <td th:text="${#temporals.format(reservaSema.data_abertura, 'dd/MM/yyyy HH:mm')}"></td>
                     <td th:text="${#temporals.format(reservaSema.data_fechamento, 'dd/MM/yyyy HH:mm')}"></td>
                     <td th:text="${reservaSema.id_porta}"></td>
-                    <td> <a th:href="${'/removerR/'+ reservaSema.id}" class="btn btn-sm btn-danger">-</a></td>
+                    <td><a th:href="${'/removerR/'+ reservaSema.id}" class="btn btn-sm btn-danger">-</a></td>
                     <!--                        <td><a id="butao" th:value="${reserva.id}" type="button" class="btn a btn-sm btn-danger"-->
                     <!--                               th:href="${'/reservaA/'+reserva.id}" >-</a></td>-->
                 </tr>
@@ -116,7 +78,7 @@
             </table>
         </section>
         <!-- Modal -->
-        <div class="modal fade" id="novaReservaSema" tabindex="-1" aria-labelledby="novaReservaTitle"
+        <div class="modal fade" id="novaReservaSema" tabindex="-1" aria-labelledby="novaReservaSemaTitle"
              aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -128,11 +90,11 @@
                         <div class="row">
                             <div class="col-6 mt-5">
                                 <span>Horario de Abertura</span>
-                                <input id="horarioESema" class="form-control" type="datetime-local"/>
+                                <input id="horarioESema" class="form-control" type="time"/>
                             </div>
                             <div class="col-6 mt-5">
                                 <span>Horario de fechamento</span>
-                                <input id="horarioSSema" class="form-control" type="datetime-local"/>
+                                <input id="horarioSSema" class="form-control" type="time"/>
                             </div>
                         </div>
                         <div class="form-floating mt-5">
@@ -146,6 +108,52 @@
                             </select>
                             <label for="sala">Selecione uma sala</label>
                         </div>
+                        <div class="row mt-2 ms-2">
+                            <div class="form-check col-3">
+                                <input class="form-check-input" type="checkbox" value="" id="segunda">
+                                <label class="form-check-label" for="segunda">
+                                    Segunda
+                                </label>
+                            </div>
+                            <div class="form-check col-3">
+                                <input class="form-check-input" type="checkbox" value="" id="terça">
+                                <label class="form-check-label" for="terça">
+                                    Terça
+                                </label>
+                            </div>
+                            <div class="form-check col-3">
+                                <input class="form-check-input" type="checkbox" value="" id="quarta">
+                                <label class="form-check-label" for="quarta">
+                                    Quarta
+                                </label>
+                            </div>
+                            <div class="form-check col-3">
+                                <input class="form-check-input" type="checkbox" value="" id="quinta">
+                                <label class="form-check-label" for="quinta">
+                                    Quinta
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row ms-5">
+                            <div class="form-check col-4">
+                                <input class="form-check-input" type="checkbox" value="" id="sexta">
+                                <label class="form-check-label" for="sexta">
+                                    Sexta
+                                </label>
+                            </div>
+                            <div class="form-check col-4">
+                                <input class="form-check-input" type="checkbox" value="" id="sabado">
+                                <label class="form-check-label" for="sabado">
+                                    Sábado
+                                </label>
+                            </div>
+                            <div class="form-check col-4">
+                                <input class="form-check-input" type="checkbox" value="" id="domingo">
+                                <label class="form-check-label" for="domingo">
+                                    Domingo
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <a type="button" class="btn btn-danger text-start" data-bs-dismiss="modal">Cancelar</a>
@@ -155,3 +163,43 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="novaReserva" tabindex="-1" aria-labelledby="novaReservaTitle"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="novaReservaTitle">Novo Horario</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6 mt-5">
+                            <span>Horario de Abertura</span>
+                            <input id="horarioE" class="form-control" type="datetime-local"/>
+                        </div>
+                        <div class="col-6 mt-5">
+                            <span>Horario de fechamento</span>
+                            <input id="horarioS" class="form-control" type="datetime-local"/>
+                        </div>
+                    </div>
+                    <div class="form-floating mt-5">
+                        <select style="border: none; border-bottom: solid 2px #0d009c; border-radius: 0"
+                                class="form-select" id="sala" aria-label="Floating label select example">
+                            <option selected value="1">Sala 1</option>
+                            <option value="2">Sala 2</option>
+                            <option value="3">Sala 3</option>
+                            <option value="4">Laboratório de informática</option>
+                            <option value="5">Laboratório de química</option>
+                        </select>
+                        <label for="sala">Selecione uma sala</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a type="button" class="btn btn-danger text-start" data-bs-dismiss="modal">Cancelar</a>
+                    <a type="button" class="text-start btn btn-primary" onclick="addReserva()">Salvar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
