@@ -1,7 +1,6 @@
 package com.cronoporta.projeto.Controller;
 
 import com.cronoporta.projeto.Model.M_Resposta;
-import com.cronoporta.projeto.Model.M_Usuario;
 import com.cronoporta.projeto.Service.S_Usuario;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;

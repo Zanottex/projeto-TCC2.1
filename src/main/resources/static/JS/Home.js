@@ -128,7 +128,7 @@ Swal.fire({
    icon: 'success',
    title: mensagem,
    showConfirmButton: false,
-   timer: 1500
+   timer: 2000
  })
  }
 
@@ -138,7 +138,7 @@ Swal.fire({
     icon: 'error',
     title: mensagem,
     showConfirmButton: false,
-    timer: 1500
+    timer: 2000
   })
   }
 

@@ -3,7 +3,7 @@ package com.cronoporta.projeto.Model;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.sql.Time;
 
 @Entity
 @Table(name = "reservas_semanais")
@@ -18,8 +18,8 @@ public class M_ReservaSema {
     private boolean sexta;
     private boolean sabado;
     private boolean domingo;
-    private LocalDateTime data_abertura;
-    private LocalDateTime data_fechamento;
+    private Time data_abertura;
+    private Time data_fechamento;
     private int id_porta;
 
     public Long getId() {
@@ -86,19 +86,19 @@ public class M_ReservaSema {
         this.domingo = domingo;
     }
 
-    public LocalDateTime getData_abertura() {
+    public Time getData_abertura() {
         return data_abertura;
     }
 
-    public void setData_abertura(LocalDateTime data_abertura) {
+    public void setData_abertura(Time data_abertura) {
         this.data_abertura = data_abertura;
     }
 
-    public LocalDateTime getData_fechamento() {
+    public Time getData_fechamento() {
         return data_fechamento;
     }
 
-    public void setData_fechamento(LocalDateTime data_fechamento) {
+    public void setData_fechamento(Time data_fechamento) {
         this.data_fechamento = data_fechamento;
     }
 

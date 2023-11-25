@@ -29,9 +29,7 @@
                     <td th:text="${#temporals.format(reserva.data_fechamento, 'dd/MM/yyyy HH:mm')}"></td>
                     <td th:text="${reserva.id_porta}"></td>
                     <td><a th:href="${'/removerR/'+ reserva.id}" class="btn btn-sm btn-danger">-</a></td>
-                    <!--                        <td><a id="butao" th:value="${reserva.id}" type="button" class="btn a btn-sm btn-danger"-->
-                    <!--                               th:href="${'/reservaA/'+reserva.id}" >-</a></td>-->
-                </tr>
+                 </tr>
                 </tbody>
             </table>
         </section>

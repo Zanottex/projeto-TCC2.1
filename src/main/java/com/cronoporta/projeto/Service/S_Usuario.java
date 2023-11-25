@@ -14,7 +14,7 @@ public class S_Usuario {
     }
 
     public static M_Usuario checarLogin(String nome, String senha) {
-        String senha3 = S_Generico.criptografarCPF(senha);
+       String senha3 = S_Generico.criptografarCPF(senha);
         M_Usuario m_usuario = r_usuario.findByUsuarioESenha(nome,senha3);
         m_usuario.setCpf(S_Generico.descriptografarCPF(m_usuario.getCpf()));
         m_usuario.setSenha(senha);

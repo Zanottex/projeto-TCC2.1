@@ -24,6 +24,9 @@ public class S_Reserva {
             podeSalvar = false;
             mensagem += "O Horario de abertura tem que ser maior que a data atual.";
         }
+//        reserva.listReservas();
+//        Validar com os horarios do banco!
+
         if(data_fechamento.isBefore(data_abertura)){
             podeSalvar = false;
             mensagem += "O Horario de abertura não pode ser maior que o horario de fechamento.";
