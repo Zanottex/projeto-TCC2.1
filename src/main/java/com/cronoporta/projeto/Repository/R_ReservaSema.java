@@ -9,8 +9,9 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 
 @Repository
-public interface R_Reserva extends JpaRepository<M_Reserva, Long> {
-    @Query(value="select * from reservas order by id",nativeQuery = true)
-    ArrayList<M_Reserva> listReservas();
+public interface R_ReservaSema extends JpaRepository<M_ReservaSema, Long> {
+
+    @Query(value="select * from reservas_semanais order by id",nativeQuery = true)
+    ArrayList<M_ReservaSema> listReservasSema();
 
 }

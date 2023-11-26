@@ -1,9 +1,7 @@
 package com.cronoporta.projeto.Service;
 
-import com.cronoporta.projeto.Model.M_Reserva;
 import com.cronoporta.projeto.Model.M_ReservaSema;
 import com.cronoporta.projeto.Model.M_Resposta;
-import com.cronoporta.projeto.Repository.R_Reserva;
 import com.cronoporta.projeto.Repository.R_ReservaSema;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -13,24 +11,19 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Service
-public class S_Reserva {
-    private static R_Reserva reserva;
-    public S_Reserva(R_Reserva reserva) {
-        this.reserva = reserva;
-    }
+public class S_ReservaSema {
 
-    public static M_Resposta reservas(int id_porta, LocalDateTime data_abertura, LocalDateTime  data_fechamento){
+    private static R_ReservaSema reservaSema;
+
+    public static M_Resposta reservasSema(int id_porta, boolean segunda, boolean terça, boolean quarta, boolean quinta, boolean sexta, boolean sabado, boolean domingo, Time data_abertura, Time  data_fechamento){
         boolean podeSalvar = true;
         String mensagem = "";
         LocalDateTime dataAtual = LocalDateTime.now();
-        if(data_abertura.isBefore(dataAtual)){
+        if(data_abertura.equals(dataAtual)){
             podeSalvar = false;
             mensagem += "O Horario de abertura tem que ser maior que a data atual.";
         }
-//        reserva.listReservas();
-//        Validar com os horarios do banco!
-
-        if(data_fechamento.isBefore(data_abertura)){
+        if(data_fechamento.before(data_abertura)){
             podeSalvar = false;
             mensagem += "O Horario de abertura não pode ser maior que o horario de fechamento.";
         }
@@ -47,30 +40,28 @@ public class S_Reserva {
             mensagem += "O horario de fechamento precisa ser informada.";
         }
         if (podeSalvar) {
-            M_Reserva m_reserva = new M_Reserva();
-            m_reserva.setData_abertura(data_abertura);
-            m_reserva.setData_fechamento(data_fechamento);
-            m_reserva.setId_porta(id_porta);
+            M_ReservaSema m_reservasema = new M_ReservaSema();
+            m_reservasema.setData_abertura(data_abertura);
+            m_reservasema.setData_fechamento(data_fechamento);
+            m_reservasema.setId_porta(id_porta);
             try {
-                M_Reserva m_reserva1 = reserva.save(m_reserva);
-                mensagem += "Horario Salvo com Sucesso!";
-                return new M_Resposta(podeSalvar,mensagem, m_reserva1.getId());
+                M_ReservaSema m_reserva1Sema = reservaSema.save(m_reservasema);
+                mensagem += "Horario Salvo com sucesso!";
+                return new M_Resposta(podeSalvar,mensagem,m_reserva1Sema.getId());
             } catch (DataIntegrityViolationException e) {
-                mensagem += "Houve um problema ao tentar salvar o horario!";
+                mensagem += "Deu n";
                 podeSalvar = false;
             }
         }
-
         return new M_Resposta(podeSalvar,mensagem);
     }
 
-
-    public static M_Resposta deletarHorario(long id){
+    public static M_Resposta deletarHorarioSema(long id){
 
         boolean deletou;
         String mensagem = "";
         try {
-            reserva.deleteById(id);
+            reservaSema.deleteById(id);
             deletou = true;
             mensagem += "Horario deletado com sucesso!";
         }catch (DataIntegrityViolationException e){
@@ -81,9 +72,8 @@ public class S_Reserva {
         return m_resposta;
     }
 
-    public static ArrayList<M_Reserva> listReservas(){
-        return reserva.listReservas();
+    public static ArrayList<M_ReservaSema> listReservasSema(){
+        return reservaSema.listReservasSema();
     }
-
-
 }
+

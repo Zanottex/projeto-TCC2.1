@@ -4,6 +4,7 @@ package com.cronoporta.projeto.Model;
 import jakarta.persistence.*;
 
 import java.sql.Time;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "reservas_semanais")
