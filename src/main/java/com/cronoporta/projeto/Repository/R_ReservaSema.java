@@ -1,6 +1,5 @@
 package com.cronoporta.projeto.Repository;
 
-import com.cronoporta.projeto.Model.M_Reserva;
 import com.cronoporta.projeto.Model.M_ReservaSema;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

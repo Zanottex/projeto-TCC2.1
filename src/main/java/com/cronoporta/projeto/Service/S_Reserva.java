@@ -23,17 +23,18 @@ public class S_Reserva {
         boolean podeSalvar = true;
         String mensagem = "";
         LocalDateTime dataAtual = LocalDateTime.now();
+//        listReservas();
         if(data_abertura.isBefore(dataAtual)){
             podeSalvar = false;
             mensagem += "O Horario de abertura tem que ser maior que a data atual.";
         }
-//        reserva.listReservas();
-//        Validar com os horarios do banco!
-
         if(data_fechamento.isBefore(data_abertura)){
             podeSalvar = false;
             mensagem += "O Horario de abertura não pode ser maior que o horario de fechamento.";
         }
+//        for(){
+//
+//        }
         if (S_Generico.textoEstaVazio(String.valueOf(id_porta))) {
             podeSalvar = false;
             mensagem += "A sala precisa ser preenchida.";

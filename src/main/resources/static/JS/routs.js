@@ -15,36 +15,25 @@ function controleRotasGet(url){
              $.get(url,function(data){
                 $("#mainFrame").html(data);
                 $(".a").click(function(){
-                    event.preventDefault();
-                    $.get($(this).attr("href"),function(data){
-                        alert(data.mensagem);
-                        if(data.sucesso){
-                            //atualiza os butao
+                event.preventDefault();
+                $.get($(this).attr("href"),function(data){
+                if(data.sucesso){
+                   mensagemSucesso(data.mensagem)
                         }
+                else{
+                   mensagemErro(data.mensagem)
+                }
                     });
                 })
              });
             }
-//        }else if (url.startsWith("/reservaA")){
-//            $.get(url,function(data){
-//                            $(".a").click(function(){
-//                                event.preventDefault();
-//                                $.get($(this).attr("href"),function(data){
-//                                    alert(data.mensagem);
-//                                    if(data.sucesso){
-//                                        alert("excloiu!")
-//                                    }
-//                                });
-//                            })
-//                         });
-//        }
         else if(url.startsWith("/removerR")){
                let id = url.replace("/removerR/","");
                gerarSwal2(url, id);
         }
         else if(url.startsWith("/removerRSema")){
-                       let id = url.replace("/removerRSema/","");
-                       gerarSwal3(url, id);
-                }
+               let id = url.replace("/removerRSema/","");
+               gerarSwal3(url, id);
+        }
         
  }

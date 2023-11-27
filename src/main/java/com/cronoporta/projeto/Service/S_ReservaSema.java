@@ -15,15 +15,32 @@ public class S_ReservaSema {
 
     private static R_ReservaSema reservaSema;
 
-    public static M_Resposta reservasSema(int id_porta, boolean segunda, boolean terça, boolean quarta, boolean quinta, boolean sexta, boolean sabado, boolean domingo, Time data_abertura, Time  data_fechamento){
+    public static M_Resposta reservasSema(int id_porta, boolean segunda, boolean terça, boolean quarta, boolean quinta, boolean sexta, boolean sabado, boolean domingo, Time data_abertura, Time  data_fechamento, LocalDateTime data_ini, LocalDateTime data_fim){
         boolean podeSalvar = true;
         String mensagem = "";
         LocalDateTime dataAtual = LocalDateTime.now();
+        listReservasSema();
         if(data_abertura.equals(dataAtual)){
             podeSalvar = false;
             mensagem += "O Horario de abertura tem que ser maior que a data atual.";
         }
+        if(!segunda && !terça && !quarta && !quinta && !sexta && !sabado && !domingo){
+            podeSalvar = false;
+            mensagem += "Ao menos um dia deve ser selecionado!";
+        }
+        if(data_ini.isBefore(dataAtual)){
+            podeSalvar = false;
+            mensagem += "A data de inicio tem que ser maior que a data atual.";
+        }
+        if(data_ini.isAfter(data_fim)){
+            podeSalvar = false;
+            mensagem += "A data de inicio tem que ser maior que a data de fim.";
+        }
         if(data_fechamento.before(data_abertura)){
+            podeSalvar = false;
+            mensagem += "O Horario de abertura não pode ser maior que o horario de fechamento.";
+        }
+        if(data_fechamento.equals(data_abertura)){
             podeSalvar = false;
             mensagem += "O Horario de abertura não pode ser maior que o horario de fechamento.";
         }
@@ -44,6 +61,15 @@ public class S_ReservaSema {
             m_reservasema.setData_abertura(data_abertura);
             m_reservasema.setData_fechamento(data_fechamento);
             m_reservasema.setId_porta(id_porta);
+            m_reservasema.setDomingo(domingo);
+            m_reservasema.setSabado(sabado);
+            m_reservasema.setSexta(sexta);
+            m_reservasema.setQuinta(quinta);
+            m_reservasema.setQuarta(quarta);
+            m_reservasema.setTerça(terça);
+            m_reservasema.setSegunda(segunda);
+            m_reservasema.setData_Inicio(data_ini);
+            m_reservasema.setData_Fim(data_fim);
             try {
                 M_ReservaSema m_reserva1Sema = reservaSema.save(m_reservasema);
                 mensagem += "Horario Salvo com sucesso!";

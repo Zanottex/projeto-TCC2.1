@@ -45,18 +45,20 @@ public class C_Home {
     public M_Resposta processReservaSema(
             @RequestParam("horarioESema") Time data_abertura,
             @RequestParam("horarioSSema") Time data_fechamento,
+            @RequestParam("data_ini") LocalDateTime data_ini,
+            @RequestParam("data_fim") LocalDateTime data_fim,
             @RequestParam("salaSema") int sala,
-            @RequestParam("segundaSema") boolean segunda,
-            @RequestParam("terçaSema") boolean terca,
-            @RequestParam("quartaSema") boolean quarta,
-            @RequestParam("quintaSema") boolean quinta,
-            @RequestParam("sextaSema") boolean sexta,
-            @RequestParam("sabadoSema") boolean sabado,
-            @RequestParam("domingoSema") boolean domingo,
+            @RequestParam("segunda") boolean segunda,
+            @RequestParam("terça") boolean terca,
+            @RequestParam("quarta") boolean quarta,
+            @RequestParam("quinta") boolean quinta,
+            @RequestParam("sexta") boolean sexta,
+            @RequestParam("sabado") boolean sabado,
+            @RequestParam("domingo") boolean domingo,
             HttpSession session
     ) {
         if(session.getAttribute("usuario") != null) {
-            return S_ReservaSema.reservasSema(sala,segunda, terca, quarta, quinta,sexta,sabado,domingo,data_abertura,data_fechamento);
+            return S_ReservaSema.reservasSema(sala,segunda, terca, quarta, quinta,sexta,sabado,domingo,data_abertura,data_fechamento, data_ini, data_fim);
         }
         return null;
     }

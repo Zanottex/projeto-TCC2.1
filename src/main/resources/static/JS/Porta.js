@@ -14,7 +14,6 @@
 //    $("#estadoPorta").text(estadoP);
 //})
 
-
 function abrirPorta(){
     let id= $("#1").val();
 

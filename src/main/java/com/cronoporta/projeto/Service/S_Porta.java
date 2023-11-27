@@ -25,10 +25,20 @@ public class S_Porta {
         boolean sucesso;
         try{
             r_porta.save(m_porta);
-            mensagem += "Deu Bom";
+            if(m_porta.isAtivo()) {
+                mensagem += "Porta Aberta com Sucesso!";
+            }
+            else{
+                mensagem += "Porta fechada com Sucesso!";
+            }
             sucesso = true;
         }catch (DataIntegrityViolationException e){
-            mensagem += "Deu ruim";
+            if(m_porta.isAtivo()) {
+                mensagem += "Houve um problema ao tentar abrir a porta!";
+            }
+            else{
+                mensagem += "Houve um problema ao tentar fechar a porta!";
+            }
             sucesso = false;
         }
         M_Resposta m_resposta = new M_Resposta(sucesso,mensagem);

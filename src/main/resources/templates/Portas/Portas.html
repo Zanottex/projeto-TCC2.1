@@ -19,7 +19,10 @@
                     <td th:value="${porta.id}" th:text="${porta.id}"></td>
                     <td th:text="${porta.sala}"></td>
                     <td th:text="${porta.ativo} ? 'Aberta' : 'Fechada'"></td>
-                    <td><a id="butao" th:value="${porta.id}" type="button" class="btn a btn-sm btn-danger" th:href="${'PortasA/'+porta.id}" th:text="${porta.ativo} ? 'Fechar' : 'Abrir'"></a></td>
+                    <td>
+                        <a th:if="${!porta.ativo}" th:value="${porta.id}"  class="btn a btn-sm btn-success" th:href="${'PortasA/'+porta.id}" th:text="${porta.ativo} ? 'Fechar' : 'Abrir'"></a>
+                        <a th:if="${porta.ativo}" th:value="${porta.id}"  class="btn a btn-sm btn-danger" th:href="${'PortasA/'+porta.id}" th:text="${porta.ativo} ? 'Fechar' : 'Abrir'"></a>
+                    </td>
                 </tr>
                 </tbody>
             </table>

@@ -22,6 +22,24 @@ public class M_ReservaSema {
     private Time data_abertura;
     private Time data_fechamento;
     private int id_porta;
+    private LocalDateTime data_Inicio;
+    private LocalDateTime data_Fim;
+
+    public LocalDateTime getData_Inicio() {
+        return data_Inicio;
+    }
+
+    public void setData_Inicio(LocalDateTime data_Inicio) {
+        this.data_Inicio = data_Inicio;
+    }
+
+    public LocalDateTime getData_Fim() {
+        return data_Fim;
+    }
+
+    public void setData_Fim(LocalDateTime data_Fim) {
+        this.data_Fim = data_Fim;
+    }
 
     public Long getId() {
         return id;
