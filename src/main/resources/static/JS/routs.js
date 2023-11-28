@@ -8,8 +8,10 @@ function controleRotasGet(url){
             });
         }else if (url === "/Hominha"){
             $.get(url,function(data){
-            $("#mainFrame").html(data);
-            desabilitaA();
+                $("#mainFrame").html(data);
+                $(".a").click(function() {
+                    controleRotasGet($(this).attr("href"));
+                });
             });
         }else if (url === "/Portas"){
              $.get(url,function(data){
