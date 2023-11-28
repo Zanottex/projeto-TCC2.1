@@ -19,12 +19,17 @@ public class S_Porta {
     }
 
     public static M_Resposta abrirPortas(long id){
+        S_Arduino s_arduino = new S_Arduino();
         M_Porta m_porta = r_porta.findPorta(id);
         m_porta.setAtivo(!m_porta.isAtivo());
         String mensagem ="";
         boolean sucesso;
         try{
             r_porta.save(m_porta);
+
+            s_arduino.mandarArduino();
+
+
             if(m_porta.isAtivo()) {
                 mensagem += "Porta Aberta com Sucesso!";
             }
