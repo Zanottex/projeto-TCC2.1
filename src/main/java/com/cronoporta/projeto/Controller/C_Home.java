@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDateTime;
 
@@ -20,6 +21,7 @@ public class C_Home {
         if (session.getAttribute("usuario") != null) {
             model.addAttribute("usuario",session.getAttribute("usuario"));
             model.addAttribute("reservas",S_Reserva.listReservas());
+            model.addAttribute("reservasSema",S_ReservaSema.listReservasSema());
             return "Home/home";
         } else {
             // A sessão não existe, redirecionar para a página de login
@@ -45,8 +47,8 @@ public class C_Home {
     public M_Resposta processReservaSema(
             @RequestParam("horarioESema") Time data_abertura,
             @RequestParam("horarioSSema") Time data_fechamento,
-            @RequestParam("data_ini") LocalDateTime data_ini,
-            @RequestParam("data_fim") LocalDateTime data_fim,
+            @RequestParam("data_ini") Date data_ini,
+            @RequestParam("data_fim") Date data_fim,
             @RequestParam("salaSema") int sala,
             @RequestParam("segunda") boolean segunda,
             @RequestParam("terça") boolean terca,

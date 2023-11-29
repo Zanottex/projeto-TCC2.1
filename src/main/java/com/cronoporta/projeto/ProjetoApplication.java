@@ -1,6 +1,5 @@
 package com.cronoporta.projeto;
 
-import com.fazecast.jSerialComm.SerialPort;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

@@ -2,10 +2,12 @@ package com.cronoporta.projeto.Service;
 
 import com.cronoporta.projeto.Model.M_ReservaSema;
 import com.cronoporta.projeto.Model.M_Resposta;
+import com.cronoporta.projeto.Repository.R_Reserva;
 import com.cronoporta.projeto.Repository.R_ReservaSema;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,11 +16,15 @@ import java.util.ArrayList;
 public class S_ReservaSema {
 
     private static R_ReservaSema reservaSema;
+    public S_ReservaSema(R_ReservaSema reservaSema) {
+        this.reservaSema = reservaSema;
+    }
 
-    public static M_Resposta reservasSema(int id_porta, boolean segunda, boolean terça, boolean quarta, boolean quinta, boolean sexta, boolean sabado, boolean domingo, Time data_abertura, Time  data_fechamento, LocalDateTime data_ini, LocalDateTime data_fim){
+
+    public static M_Resposta reservasSema(int id_porta, boolean segunda, boolean terça, boolean quarta, boolean quinta, boolean sexta, boolean sabado, boolean domingo, Time data_abertura, Time  data_fechamento, Date data_ini, Date data_fim){
         boolean podeSalvar = true;
         String mensagem = "";
-        LocalDateTime dataAtual = LocalDateTime.now();
+        Date dataAtual = new Date();
         listReservasSema();
         if(data_abertura.equals(dataAtual)){
             podeSalvar = false;
@@ -28,11 +34,11 @@ public class S_ReservaSema {
             podeSalvar = false;
             mensagem += "Ao menos um dia deve ser selecionado!";
         }
-        if(data_ini.isBefore(dataAtual)){
+        if(data_ini.before(dataAtual)){
             podeSalvar = false;
             mensagem += "A data de inicio tem que ser maior que a data atual.";
         }
-        if(data_ini.isAfter(data_fim)){
+        if(data_ini.after(data_fim)){
             podeSalvar = false;
             mensagem += "A data de inicio tem que ser maior que a data de fim.";
         }

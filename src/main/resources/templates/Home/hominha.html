@@ -69,8 +69,6 @@
                     <td th:text="${#temporals.format(reservaSema.data_fechamento, 'dd/MM/yyyy HH:mm')}"></td>
                     <td th:text="${reservaSema.id_porta}"></td>
                     <td><a th:href="${'/removerR/'+ reservaSema.id}" class="btn btn-sm btn-danger">-</a></td>
-                    <!--                        <td><a id="butao" th:value="${reserva.id}" type="button" class="btn a btn-sm btn-danger"-->
-                    <!--                               th:href="${'/reservaA/'+reserva.id}" >-</a></td>-->
                 </tr>
                 </tbody>
             </table>
@@ -98,11 +96,11 @@
                         <div class="row">
                             <div class="col-6 mt-5">
                                 <span>Horario de Abertura</span>
-                                <input id="data_inicio" class="form-control" type="datetime-local"/>
+                                <input id="data_inicio" class="form-control" type="date"/>
                             </div>
                             <div class="col-6 mt-5">
                                 <span>Horario de fechamento</span>
-                                <input id="data_fim" class="form-control" type="datetime-local"/>
+                                <input id="data_fim" class="form-control" type="date"/>
                             </div>
                         </div>
                         <div class="form-floating mt-5">

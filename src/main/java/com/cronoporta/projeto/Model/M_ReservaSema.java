@@ -3,6 +3,7 @@ package com.cronoporta.projeto.Model;
 
 import jakarta.persistence.*;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDateTime;
 
@@ -19,26 +20,26 @@ public class M_ReservaSema {
     private boolean sexta;
     private boolean sabado;
     private boolean domingo;
-    private Time data_abertura;
-    private Time data_fechamento;
+    private Time data_aberturasema;
+    private Time data_fechamentosema;
     private int id_porta;
-    private LocalDateTime data_Inicio;
-    private LocalDateTime data_Fim;
+    private Date data_inicio;
+    private Date data_fim;
 
-    public LocalDateTime getData_Inicio() {
-        return data_Inicio;
+    public Date getData_Inicio() {
+        return data_inicio;
     }
 
-    public void setData_Inicio(LocalDateTime data_Inicio) {
-        this.data_Inicio = data_Inicio;
+    public void setData_Inicio(Date data_inicio) {
+        this.data_inicio = data_inicio;
     }
 
-    public LocalDateTime getData_Fim() {
-        return data_Fim;
+    public Date getData_Fim() {
+        return data_fim;
     }
 
-    public void setData_Fim(LocalDateTime data_Fim) {
-        this.data_Fim = data_Fim;
+    public void setData_Fim(Date data_fim) {
+        this.data_fim = data_fim;
     }
 
     public Long getId() {
@@ -106,20 +107,18 @@ public class M_ReservaSema {
     }
 
     public Time getData_abertura() {
-        return data_abertura;
+        return data_aberturasema;
     }
 
-    public void setData_abertura(Time data_abertura) {
-        this.data_abertura = data_abertura;
+    public void setData_abertura(Time data_aberturasema) {
+        this.data_aberturasema = data_aberturasema;
     }
 
     public Time getData_fechamento() {
-        return data_fechamento;
+        return data_fechamentosema;
     }
 
-    public void setData_fechamento(Time data_fechamento) {
-        this.data_fechamento = data_fechamento;
-    }
+    public void setData_fechamento(Time data_fechamentosema) {this.data_fechamentosema = data_fechamentosema;}
 
     public int getId_porta() {
         return id_porta;
