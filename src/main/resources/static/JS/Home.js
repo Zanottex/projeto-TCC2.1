@@ -126,11 +126,11 @@ function addReserva(){
 function addReservaSema(){
     let horarioESema = $("#horarioESema").val();
     let horarioSSema = $("#horarioSSema").val();
-    let data_ini = $("#data_inicio").val();
-    let data_fim = $("#data_fim").val();
-    let sala = $("#salaSema").val();
+    let date_ini = $("#date_ini").val();
+    let date_fim = $("#date_fim").val();
+    let salaSema = $("#salaSema").val();
     let segunda = $("#segunda").prop('checked');
-    let terça = $("#terça").prop('checked');
+    let terca = $("#terca").prop('checked');
     let quarta = $("#quarta").prop('checked');
     let quinta = $("#quinta").prop('checked');
     let sexta = $("#sexta").prop('checked');
@@ -144,11 +144,11 @@ function addReservaSema(){
            data: {
                horarioESema: horarioESema,
                horarioSSema: horarioSSema,
-               data_ini : data_ini,
-               data_fim : data_fim,
+               date_ini : date_ini,
+               date_fim : date_fim,
                salaSema: salaSema,
                segunda : segunda,
-               terça : terça,
+               terca : terca,
                quarta : quarta,
                quinta : quinta,
                sexta : sexta,
@@ -159,7 +159,7 @@ function addReservaSema(){
             if(data.sucesso){
                mensagemSucesso(data.mensagem);
                $('#novaReservaSema').modal('hide');
-//               criarLinhaSema(data.id, horarioESema, horarioSSema, salaSema, segunda, terça, quarta, quinta, sexta, sabado, domingo)
+//               criarLinhaSema(data.id, horarioESema, horarioSSema, salaSema, segunda, terca, quarta, quinta, sexta, sabado, domingo)
                }
                else{
                mensagemErro(data.mensagem)
@@ -242,7 +242,7 @@ function criarLinha(idHorario, horarioE, horarioS, sala){
     '<td> <a th:href="${/removerR/ + reserva.id}" class="btn btn-sm btn-danger">-</a></td> '+
     '</tr>');
 }
-//function criarLinhaSema(idHorario, horarioE, horarioS, sala, segunda, terça, quarta, quinta, sexta, sabado, domingo{
+//function criarLinhaSema(idHorario, horarioE, horarioS, sala, segunda, terca, quarta, quinta, sexta, sabado, domingo{
 //    let data_aber = new Date(horarioE);
 //    let data_fech = new Date(horarioS);
 //    $("#listaReservas").append('<tr>' +

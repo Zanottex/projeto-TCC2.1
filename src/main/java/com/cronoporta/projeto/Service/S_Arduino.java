@@ -1,7 +1,6 @@
 package com.cronoporta.projeto.Service;
 
 import com.cronoporta.projeto.Model.M_Porta;
-import com.cronoporta.projeto.Repository.R_Porta;
 import com.fazecast.jSerialComm.SerialPort;
 import org.springframework.stereotype.Service;
 

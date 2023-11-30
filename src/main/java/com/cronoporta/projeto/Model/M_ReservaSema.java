@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "reservas_semanais")
@@ -14,31 +16,31 @@ public class M_ReservaSema {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private boolean segunda;
-    private boolean terça;
+    private boolean terca;
     private boolean quarta;
     private boolean quinta;
     private boolean sexta;
     private boolean sabado;
     private boolean domingo;
-    private Time data_aberturasema;
-    private Time data_fechamentosema;
-    private int id_porta;
-    private Date data_inicio;
-    private Date data_fim;
+    private LocalTime horario_aberturasema;
+    private LocalTime horario_fechamentosema;
+    private int porta_id;
+    private LocalDate data_inicio;
+    private LocalDate data_fim;
 
-    public Date getData_Inicio() {
+    public LocalDate getData_Inicio() {
         return data_inicio;
     }
 
-    public void setData_Inicio(Date data_inicio) {
+    public void setData_Inicio(LocalDate data_inicio) {
         this.data_inicio = data_inicio;
     }
 
-    public Date getData_Fim() {
+    public LocalDate getData_Fim() {
         return data_fim;
     }
 
-    public void setData_Fim(Date data_fim) {
+    public void setData_Fim(LocalDate data_fim) {
         this.data_fim = data_fim;
     }
 
@@ -58,12 +60,12 @@ public class M_ReservaSema {
         this.segunda = segunda;
     }
 
-    public boolean isTerça() {
-        return terça;
+    public boolean isTerca() {
+        return terca;
     }
 
-    public void setTerça(boolean terça) {
-        this.terça = terça;
+    public void setTerca(boolean terca) {
+        this.terca = terca;
     }
 
     public boolean isQuarta() {
@@ -106,25 +108,24 @@ public class M_ReservaSema {
         this.domingo = domingo;
     }
 
-    public Time getData_abertura() {
-        return data_aberturasema;
+    public LocalTime getHorario_aberturaSema() {
+        return horario_aberturasema;
     }
 
-    public void setData_abertura(Time data_aberturasema) {
-        this.data_aberturasema = data_aberturasema;
+    public void setHorario_aberturasema(LocalTime horario_aberturasema) {
+        this.horario_aberturasema = horario_aberturasema;}
+
+    public LocalTime getHorario_fechamentoSema() {
+        return horario_fechamentosema;
     }
 
-    public Time getData_fechamento() {
-        return data_fechamentosema;
+    public void setHorario_fechamentosema(LocalTime horario_fechamentosema) {this.horario_fechamentosema = horario_fechamentosema;}
+
+    public int geporta_idId_porta() {
+        return porta_id;
     }
 
-    public void setData_fechamento(Time data_fechamentosema) {this.data_fechamentosema = data_fechamentosema;}
-
-    public int getId_porta() {
-        return id_porta;
-    }
-
-    public void setId_porta(int id_porta) {
-        this.id_porta = id_porta;
+    public void setporta_id(int porta_id) {
+        this.porta_id = porta_id;
     }
 }

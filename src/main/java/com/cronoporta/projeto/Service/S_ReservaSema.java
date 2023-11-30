@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 @Service
@@ -21,32 +24,41 @@ public class S_ReservaSema {
     }
 
 
-    public static M_Resposta reservasSema(int id_porta, boolean segunda, boolean terça, boolean quarta, boolean quinta, boolean sexta, boolean sabado, boolean domingo, Time data_abertura, Time  data_fechamento, Date data_ini, Date data_fim){
+    public static M_Resposta reservasSema(int id_porta, boolean segunda, boolean terca, boolean quarta, boolean quinta, boolean sexta, boolean sabado, boolean domingo, String horario_abertura, String  data_fechamento,String data_ini, String data_fim){
         boolean podeSalvar = true;
         String mensagem = "";
-        Date dataAtual = new Date();
+        LocalDate dataAtual = LocalDate.now();
         listReservasSema();
-        if(data_abertura.equals(dataAtual)){
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate data1 = LocalDate.parse(data_ini, formatter);
+        LocalDate data2 = LocalDate.parse(data_fim, formatter);
+
+        DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime hora1 = LocalTime.parse(horario_abertura, formatterTime);
+        LocalTime hora2 = LocalTime.parse(data_fechamento, formatterTime);
+
+        if(horario_abertura.equals(dataAtual)){
             podeSalvar = false;
             mensagem += "O Horario de abertura tem que ser maior que a data atual.";
         }
-        if(!segunda && !terça && !quarta && !quinta && !sexta && !sabado && !domingo){
+        if(!segunda && !terca && !quarta && !quinta && !sexta && !sabado && !domingo){
             podeSalvar = false;
             mensagem += "Ao menos um dia deve ser selecionado!";
         }
-        if(data_ini.before(dataAtual)){
+        if(data1.isBefore(dataAtual)){
             podeSalvar = false;
             mensagem += "A data de inicio tem que ser maior que a data atual.";
         }
-        if(data_ini.after(data_fim)){
+        if(data1.isAfter(data2)){
             podeSalvar = false;
             mensagem += "A data de inicio tem que ser maior que a data de fim.";
         }
-        if(data_fechamento.before(data_abertura)){
+        if(hora2.isBefore(hora1)){
             podeSalvar = false;
             mensagem += "O Horario de abertura não pode ser maior que o horario de fechamento.";
         }
-        if(data_fechamento.equals(data_abertura)){
+        if(data_fechamento.equals(horario_abertura)){
             podeSalvar = false;
             mensagem += "O Horario de abertura não pode ser maior que o horario de fechamento.";
         }
@@ -54,7 +66,7 @@ public class S_ReservaSema {
             podeSalvar = false;
             mensagem += "A sala precisa ser preenchida.";
         }
-        if (S_Generico.textoEstaVazio(String.valueOf(data_abertura))) {
+        if (S_Generico.textoEstaVazio(String.valueOf(horario_abertura))) {
             podeSalvar = false;
             mensagem += "O horario de abertura precisa ser informada.";
         }
@@ -64,18 +76,18 @@ public class S_ReservaSema {
         }
         if (podeSalvar) {
             M_ReservaSema m_reservasema = new M_ReservaSema();
-            m_reservasema.setData_abertura(data_abertura);
-            m_reservasema.setData_fechamento(data_fechamento);
-            m_reservasema.setId_porta(id_porta);
+            m_reservasema.setHorario_aberturasema(hora1);
+            m_reservasema.setHorario_fechamentosema(hora2);
+            m_reservasema.setporta_id(id_porta);
             m_reservasema.setDomingo(domingo);
             m_reservasema.setSabado(sabado);
             m_reservasema.setSexta(sexta);
             m_reservasema.setQuinta(quinta);
             m_reservasema.setQuarta(quarta);
-            m_reservasema.setTerça(terça);
+            m_reservasema.setTerca(terca);
             m_reservasema.setSegunda(segunda);
-            m_reservasema.setData_Inicio(data_ini);
-            m_reservasema.setData_Fim(data_fim);
+            m_reservasema.setData_Inicio(data1);
+            m_reservasema.setData_Fim(data2);
             try {
                 M_ReservaSema m_reserva1Sema = reservaSema.save(m_reservasema);
                 mensagem += "Horario Salvo com sucesso!";

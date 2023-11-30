@@ -7,9 +7,8 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Controller
@@ -21,7 +20,7 @@ public class C_Home {
         if (session.getAttribute("usuario") != null) {
             model.addAttribute("usuario",session.getAttribute("usuario"));
             model.addAttribute("reservas",S_Reserva.listReservas());
-            model.addAttribute("reservasSema",S_ReservaSema.listReservasSema());
+            model.addAttribute("reservaSema",S_ReservaSema.listReservasSema());
             return "Home/home";
         } else {
             // A sessão não existe, redirecionar para a página de login
@@ -31,13 +30,13 @@ public class C_Home {
     @PostMapping("/Reserva")
     @ResponseBody
     public M_Resposta processReserva(
-                                 @RequestParam("horarioE") LocalDateTime data_abertura,
+                                 @RequestParam("horarioE") LocalDateTime horario_abertura,
                                  @RequestParam("horarioS") LocalDateTime data_fechamento,
                                  @RequestParam("sala") int sala,
                                  HttpSession session
                                  ) {
         if(session.getAttribute("usuario") != null) {
-            return S_Reserva.reservas(sala,data_abertura,data_fechamento);
+            return S_Reserva.reservas(sala,horario_abertura,data_fechamento);
         }
         return null;
     }
@@ -45,13 +44,13 @@ public class C_Home {
     @PostMapping("/ReservaSema")
     @ResponseBody
     public M_Resposta processReservaSema(
-            @RequestParam("horarioESema") Time data_abertura,
-            @RequestParam("horarioSSema") Time data_fechamento,
-            @RequestParam("data_ini") Date data_ini,
-            @RequestParam("data_fim") Date data_fim,
+            @RequestParam("horarioESema") String horario_abertura,
+            @RequestParam("horarioSSema") String data_fechamento,
+            @RequestParam("date_ini") String data_ini,
+            @RequestParam("date_fim") String data_fim,
             @RequestParam("salaSema") int sala,
             @RequestParam("segunda") boolean segunda,
-            @RequestParam("terça") boolean terca,
+            @RequestParam("terca") boolean terca,
             @RequestParam("quarta") boolean quarta,
             @RequestParam("quinta") boolean quinta,
             @RequestParam("sexta") boolean sexta,
@@ -60,7 +59,7 @@ public class C_Home {
             HttpSession session
     ) {
         if(session.getAttribute("usuario") != null) {
-            return S_ReservaSema.reservasSema(sala,segunda, terca, quarta, quinta,sexta,sabado,domingo,data_abertura,data_fechamento, data_ini, data_fim);
+           return S_ReservaSema.reservasSema(sala,segunda, terca, quarta, quinta,sexta,sabado,domingo,horario_abertura,data_fechamento, data_ini, data_fim);
         }
         return null;
     }

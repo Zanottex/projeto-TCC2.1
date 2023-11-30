@@ -19,16 +19,16 @@ public class S_Reserva {
         this.reserva = reserva;
     }
 
-    public static M_Resposta reservas(int id_porta, LocalDateTime data_abertura, LocalDateTime  data_fechamento){
+    public static M_Resposta reservas(int id_porta, LocalDateTime horario_abertura, LocalDateTime  data_fechamento){
         boolean podeSalvar = true;
         String mensagem = "";
         LocalDateTime dataAtual = LocalDateTime.now();
 //        listReservas();
-        if(data_abertura.isBefore(dataAtual)){
+        if(horario_abertura.isBefore(dataAtual)){
             podeSalvar = false;
             mensagem += "O Horario de abertura tem que ser maior que a data atual.";
         }
-        if(data_fechamento.isBefore(data_abertura)){
+        if(data_fechamento.isBefore(horario_abertura)){
             podeSalvar = false;
             mensagem += "O Horario de abertura não pode ser maior que o horario de fechamento.";
         }
@@ -39,7 +39,7 @@ public class S_Reserva {
             podeSalvar = false;
             mensagem += "A sala precisa ser preenchida.";
         }
-        if (S_Generico.textoEstaVazio(String.valueOf(data_abertura))) {
+        if (S_Generico.textoEstaVazio(String.valueOf(horario_abertura))) {
             podeSalvar = false;
             mensagem += "O horario de abertura precisa ser informada.";
         }
@@ -49,7 +49,7 @@ public class S_Reserva {
         }
         if (podeSalvar) {
             M_Reserva m_reserva = new M_Reserva();
-            m_reserva.setData_abertura(data_abertura);
+            m_reserva.setData_abertura(horario_abertura);
             m_reserva.setData_fechamento(data_fechamento);
             m_reserva.setId_porta(id_porta);
             try {

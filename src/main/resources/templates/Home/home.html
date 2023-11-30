@@ -82,7 +82,7 @@
                         <td th:text="${#temporals.format(reserva.data_abertura, 'dd/MM/yyyy HH:mm')}"></td>
                         <td th:text="${#temporals.format(reserva.data_fechamento, 'dd/MM/yyyy HH:mm')}"></td>
                         <td th:text="${reserva.id_porta}"></td>
-                        <td><a th:href="${'/removerR/'+ reserva.id}" class="btn btn-sm btn-danger">-</a></td>
+                        <td><a th:href="${'/removerR/'+ reserva.id}" class="btn btn-sm btn-danger">X</a></td>
                       </tr>
                     </tbody>
                 </table>
@@ -105,24 +105,28 @@
                         <th>Dia(s)</th>
                         <th>Horario de abrir</th>
                         <th>Horario de Fechar</th>
+                        <th>Data de Inicio</th>
+                        <th>Data de Fim</th>
                         <th>Porta</th>
                         <th>Deletar</th>
                     </tr>
                     </thead>
                     <tbody id="listaReservasSema">
-                    <tr th:id="${'excloiSema'+reservaSema.id}" th:each="reservaSema : ${reservasSema}">
-                        <td id="idHorarioSema" th:text="${reservaSema.id}"></td>
-                        <td th:if="${reservaSema.segunda == true}">Segunda</td>
-                        <td th:if="${reservaSema.terça == true}">Terça</td>
-                        <td th:if="${reservaSema.quarta == true}">Quarta</td>
-                        <td th:if="${reservaSema.quinta == true}">Quinta</td>
-                        <td th:if="${reservaSema.sexta == true}">Sexta</td>
-                        <td th:if="${reservaSema.sabado == true}">Sábado</td>
-                        <td th:if="${reservaSema.domingo == true}">Domingo</td>
-                        <td th:text="${#temporals.format(reservaSema.data_abertura, 'dd/MM/yyyy HH:mm')}"></td>
-                        <td th:text="${#temporals.format(reservaSema.data_fechamento, 'dd/MM/yyyy HH:mm')}"></td>
-                        <td th:text="${reservaSema.id_porta}"></td>
-                        <td><a th:href="${'/removerR/'+ reservaSema.id}" class="btn btn-sm btn-danger">-</a></td>
+                    <tr th:id="${'excloiSema'+reservaSem.id}" th:each="reservaSem : ${reservaSema}">
+                        <td id="idHorarioSema" th:text="${reservaSem.id}"></td>
+<!--                        <td th:if="${reservaSema.segunda == true}">Segunda</td>-->
+<!--                        <td th:if="${reservaSema.terca == true}">Terca</td>-->
+<!--                        <td th:if="${reservaSema.quarta == true}">Quarta</td>-->
+<!--                        <td th:if="${reservaSema.quinta == true}">Quinta</td>-->
+<!--                        <td th:if="${reservaSema.sexta == true}">Sexta</td>-->
+<!--                        <td th:if="${reservaSema.sabado == true}">Sábado</td>-->
+<!--                        <td th:if="${reservaSema.domingo == true}">Domingo</td>-->
+                        <td th:text="${#temporals.format(reservaSem.horario_aberturasema, 'HH:mm')}"></td>
+                        <td th:text="${#temporals.format(reservaSem.horario_fechamentosema,'HH:mm')}"></td>
+                        <td th:text="${#temporals.format(reservaSem.data_inicio, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${#temporals.format(reservaSem.data_fim, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${reservaSem.id_porta}"></td>
+                        <td><a th:href="${'/removerR/'+ reservaSem.id}" class="btn btn-sm btn-danger">X</a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -150,11 +154,11 @@
                             <div class="row">
                                 <div class="col-6 mt-5">
                                     <span>Horario de Abertura</span>
-                                    <input id="data_inicio" class="form-control" type="date"/>
+                                    <input id="date_ini" class="form-control" type="date"/>
                                 </div>
                                 <div class="col-6 mt-5">
                                     <span>Horario de fechamento</span>
-                                    <input id="data_fim" class="form-control" type="date"/>
+                                    <input id="date_fim" class="form-control" type="date"/>
                                 </div>
                             </div>
                             <div class="form-floating mt-5">
@@ -176,9 +180,9 @@
                                     </label>
                                 </div>
                                 <div class="form-check col-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="terça">
-                                    <label class="form-check-label" for="terça">
-                                        Terça
+                                    <input class="form-check-input" type="checkbox" value="" id="terca">
+                                    <label class="form-check-label" for="terca">
+                                        terca
                                     </label>
                                 </div>
                                 <div class="form-check col-3">
