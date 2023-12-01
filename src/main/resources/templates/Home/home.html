@@ -114,18 +114,12 @@
                     <tbody id="listaReservasSema">
                     <tr th:id="${'excloiSema'+reservaSem.id}" th:each="reservaSem : ${reservaSema}">
                         <td id="idHorarioSema" th:text="${reservaSem.id}"></td>
-<!--                        <td th:if="${reservaSema.segunda == true}">Segunda</td>-->
-<!--                        <td th:if="${reservaSema.terca == true}">Terca</td>-->
-<!--                        <td th:if="${reservaSema.quarta == true}">Quarta</td>-->
-<!--                        <td th:if="${reservaSema.quinta == true}">Quinta</td>-->
-<!--                        <td th:if="${reservaSema.sexta == true}">Sexta</td>-->
-<!--                        <td th:if="${reservaSema.sabado == true}">Sábado</td>-->
-<!--                        <td th:if="${reservaSema.domingo == true}">Domingo</td>-->
-                        <td th:text="${#temporals.format(reservaSem.horario_aberturasema, 'HH:mm')}"></td>
-                        <td th:text="${#temporals.format(reservaSem.horario_fechamentosema,'HH:mm')}"></td>
-                        <td th:text="${#temporals.format(reservaSem.data_inicio, 'dd/MM/yyyy')}"></td>
-                        <td th:text="${#temporals.format(reservaSem.data_fim, 'dd/MM/yyyy')}"></td>
-                        <td th:text="${reservaSem.id_porta}"></td>
+                       <td>  </td>
+                        <td th:text="${reservaSem.horario_aberturasema}"></td>
+                        <td th:text="${reservaSem.horario_fechamentosema}"></td>
+                        <td th:text="${reservaSem.data_inicio}"></td>
+                        <td th:text="${reservaSem.data_fim}"></td>
+                        <td th:text="${reservaSem.porta_id}"></td>
                         <td><a th:href="${'/removerR/'+ reservaSem.id}" class="btn btn-sm btn-danger">X</a></td>
                     </tr>
                     </tbody>

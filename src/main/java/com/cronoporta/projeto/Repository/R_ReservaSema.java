@@ -13,4 +13,7 @@ public interface R_ReservaSema extends JpaRepository<M_ReservaSema, Long> {
     @Query(value="select * from reservas_semanais order by id",nativeQuery = true)
     ArrayList<M_ReservaSema> listReservasSema();
 
+    @Query(value="select segunda, terca, quarta, quinta, sexta, sabado, domingo FROM reservas_semanais")
+    ArrayList<Boolean> listDias();
+
 }

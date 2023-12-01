@@ -24,11 +24,11 @@ public class M_ReservaSema {
     private boolean domingo;
     private LocalTime horario_aberturasema;
     private LocalTime horario_fechamentosema;
-    private int porta_id;
+    private int  porta_id;
     private LocalDate data_inicio;
     private LocalDate data_fim;
 
-    public LocalDate getData_Inicio() {
+    public LocalDate getData_inicio() {
         return data_inicio;
     }
 
@@ -36,7 +36,7 @@ public class M_ReservaSema {
         this.data_inicio = data_inicio;
     }
 
-    public LocalDate getData_Fim() {
+    public LocalDate getData_fim() {
         return data_fim;
     }
 
@@ -108,24 +108,24 @@ public class M_ReservaSema {
         this.domingo = domingo;
     }
 
-    public LocalTime getHorario_aberturaSema() {
+    public LocalTime getHorario_aberturasema() {
         return horario_aberturasema;
     }
 
     public void setHorario_aberturasema(LocalTime horario_aberturasema) {
         this.horario_aberturasema = horario_aberturasema;}
 
-    public LocalTime getHorario_fechamentoSema() {
+    public LocalTime getHorario_fechamentosema() {
         return horario_fechamentosema;
     }
 
     public void setHorario_fechamentosema(LocalTime horario_fechamentosema) {this.horario_fechamentosema = horario_fechamentosema;}
 
-    public int geporta_idId_porta() {
-        return porta_id;
+    public int getPorta_id() {
+        return  porta_id;
     }
 
-    public void setporta_id(int porta_id) {
-        this.porta_id = porta_id;
+    public void setporta_id(int  porta_id) {
+        this. porta_id =  porta_id;
     }
 }
