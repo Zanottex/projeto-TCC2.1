@@ -1,4 +1,4 @@
-//$(".a").click(function mudarTipo(){
+//function mudarTipo(){
 //    let estado = $(this).attr(text);
 //    let estadoP = $("#estadoPorta").text();
 //    if(estado == "Fechar"){
@@ -13,26 +13,27 @@
 //    $(this).text(estado);
 //    $("#estadoPorta").text(estadoP);
 //})
-
-function abrirPorta(){
-    let id= $("#1").val();
-
-    $.ajax({
-        type: "POST",
-        url: "/PortasA",
-        data:{
-            id:id,
-        },
-        success: function(data){
-            if(data){
-                mensagemSucesso("Porta fechada com sucesso!")
-            }else{
-                mensagemErro("Houve um problema ao fechar a porta verifique e tente novamente!")
-            }
-        },
-        error: function(data){
-            alert("Deu Ruim!")
-        }
-    })
-}
+//}
+//function abrirPorta(){
+//    let id= $("#1").val();
+//
+//    $.ajax({
+//        type: "POST",
+//        url: "/PortasA",
+//        data:{
+//            id:id,
+//        },
+//        success: function(data){
+//            if(data){
+//                mensagemSucesso("Porta fechada com sucesso!")
+//
+//            }else{
+//                mensagemErro("Houve um problema ao fechar a porta verifique e tente novamente!")
+//            }
+//        },
+//        error: function(data){
+//            alert("Deu Ruim!")
+//        }
+//    })
+//}
 

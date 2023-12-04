@@ -7,7 +7,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class S_Usuario {
+public class    S_Usuario {
     private static R_Usuario r_usuario;
     public S_Usuario(R_Usuario usuario) {
         this.r_usuario = usuario;

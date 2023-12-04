@@ -128,4 +128,6 @@ public class M_ReservaSema {
     public void setporta_id(int  porta_id) {
         this. porta_id =  porta_id;
     }
+
+
 }

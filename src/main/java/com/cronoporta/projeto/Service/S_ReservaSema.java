@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class S_ReservaSema {
@@ -116,6 +117,32 @@ public class S_ReservaSema {
         return m_resposta;
     }
 
+    public static String listdias(Long id){
+        String mensagem = "";
+            M_ReservaSema mReservaSema = reservaSema.listar1reserva(id);
+            if(mReservaSema.isDomingo()) {
+                mensagem += " Domingo ";
+            }
+            if(mReservaSema.isSegunda()) {
+                mensagem += " Segunda ";
+            }
+            if(mReservaSema.isTerca()) {
+                mensagem += " Terça ";
+            }
+            if(mReservaSema.isQuarta()) {
+                mensagem += " Quarta ";
+            }
+            if(mReservaSema.isQuinta()) {
+                mensagem += " Quinta ";
+            }
+            if(mReservaSema.isSexta()) {
+                mensagem += " Sexta ";
+            }
+            if(mReservaSema.isSabado()) {
+                mensagem += " Sábado ";
+        }
+        return mensagem;
+    }
     public static ArrayList<M_ReservaSema> listReservasSema(){
         return reservaSema.listReservasSema();
     }

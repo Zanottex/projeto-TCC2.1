@@ -8,8 +8,18 @@ function controleRotasGet(url){
             });
         }else if (url === "/Hominha"){
             $.get(url,function(data){
-            $("#mainFrame").html(data);
-                         });
+                $("#mainFrame").html(data);
+                $('.a').click(function(event){
+                        if(!$(this).hasClass('dropdown-toggle')){
+                            event.preventDefault();
+                            if(!$(this).hasClass('btn')){
+                                $('a').removeClass('active disabled');
+                                $(this).addClass('active disabled');
+                            }
+                            controleRotasGet($(this).attr("href"));
+                        }
+                    });
+            });
         }else if (url === "/Portas"){
              $.get(url,function(data){
                 $("#mainFrame").html(data);
