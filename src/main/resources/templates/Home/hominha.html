@@ -1,40 +1,4 @@
-
-<body>
-<nav class="navbar navbar-expand-lg border-bottom border-body bg-dark" data-bs-theme="dark">
-    <div class="container-fluid">
-        <a class="navbar-brand">
-            <img src="https://www.sistemafiep.org.br/onde-encontrar/resources/img/logo_sistema.png"
-                 height="40px" width="160px">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/Hominha">Horarios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/Portas">Portas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/edit/usuario">Perfil</a>
-                </li>
-
-            </ul>
-            <div class="d-flex">
-                <div style="width: 100%;">
-                    <h6 class="mt-1"></h6>
-                </div>
-                <div class="text-end">
-                    <a href="/logout" class="btn btn-sm btn-danger">Sair</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
-<div id="mainFrame" class="ms-5 me-5 mt-5">
+<div id="mainFrame" >
     <div class="row mt-5">
         <div class="col-5 spacer">
             <div class="d-flex justify-content-between align-items-center">
@@ -94,20 +58,13 @@
                     <tbody id="listaReservasSema">
                     <tr th:id="${'excloiSema'+reservaSem.id}" th:each="reservaSem : ${reservaSema}">
                         <td id="idHorarioSema" th:text="${reservaSem.id}"></td>
-                        <td th:text="${reservaSem.segunda} ? 'Segunda' : ''"
-                            th:text="${reservaSem.terca} ? 'Terça' : ''"
-                            th:text="${reservaSem.quarta} ? 'Quarta' : ''"
-                            th:text="${reservaSem.quinta} ? 'Quinta' : ''"
-                            th:text="${reservaSem.sexta} ? 'Sexta' : ''"
-                            th:text="${reservaSem.sabado} ? 'Sabado' : ''"
-                            th:text="${reservaSem.domigo} ? 'Domingo' : ''"
-                        ></td>
+                        <td>  </td>
                         <td th:text="${reservaSem.horario_aberturasema}"></td>
                         <td th:text="${reservaSem.horario_fechamentosema}"></td>
                         <td th:text="${reservaSem.data_inicio}"></td>
                         <td th:text="${reservaSem.data_fim}"></td>
                         <td th:text="${reservaSem.porta_id}"></td>
-                        <td><a th:href="${'/removerR/'+ reservaSem.id}" class="btn btn-sm btn-danger">X</a></td>
+                        <td><a th:href="${'/SemaremoverR/'+ reservaSem.id}" class="btn btn-sm btn-danger">X</a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -134,11 +91,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-6 mt-5">
-                                    <span>Horario de Abertura</span>
+                                    <span>Data de inicio</span>
                                     <input id="date_ini" class="form-control" type="date"/>
                                 </div>
                                 <div class="col-6 mt-5">
-                                    <span>Horario de fechamento</span>
+                                    <span>Data de fim</span>
                                     <input id="date_fim" class="form-control" type="date"/>
                                 </div>
                             </div>
@@ -245,10 +202,30 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="email" tabindex="-1" aria-labelledby="novaReservaTitle"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="emailTittle">Escreva o E-mail que receberá o Relatório.</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <span>E-mail</span>
+                                    <input id="emailEnviar" class="form-control" type="text"/>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <a type="button" class="btn btn-danger text-start" data-bs-dismiss="modal">Cancelar</a>
+                                <button type="button" class="text-start btn btn-primary" onclick="enviarEmail()">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-</div>
-</div>
-</body>
-</html>

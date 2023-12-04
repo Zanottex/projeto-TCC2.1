@@ -47,6 +47,9 @@
                 <div style="width: 100%;">
                     <h6 class="mt-1"></h6>
                 </div>
+                <button type="button" class="btn btn-sm btn-primary me-3" data-bs-toggle="modal"
+                        data-bs-target="#email">Relatório
+                </button>
                 <div class="text-end">
                     <a href="/logout" class="btn btn-sm btn-danger">Sair</a>
                 </div>
@@ -82,7 +85,7 @@
                         <td th:text="${#temporals.format(reserva.data_abertura, 'dd/MM/yyyy HH:mm')}"></td>
                         <td th:text="${#temporals.format(reserva.data_fechamento, 'dd/MM/yyyy HH:mm')}"></td>
                         <td th:text="${reserva.id_porta}"></td>
-                        <td><a th:href="${'/removerR/'+ reserva.id}" class="btn btn-sm btn-danger">X</a></td>
+                        <td><a th:href="${'/removerR/'+ reserva.id}" class="btn btn-sm btn-danger" onclick="desabilitaA()">X</a></td>
                       </tr>
                     </tbody>
                 </table>
@@ -114,13 +117,13 @@
                     <tbody id="listaReservasSema">
                     <tr th:id="${'excloiSema'+reservaSem.id}" th:each="reservaSem : ${reservaSema}">
                         <td id="idHorarioSema" th:text="${reservaSem.id}"></td>
-                       <td>  </td>
+                        <td>  </td>
                         <td th:text="${reservaSem.horario_aberturasema}"></td>
                         <td th:text="${reservaSem.horario_fechamentosema}"></td>
                         <td th:text="${reservaSem.data_inicio}"></td>
                         <td th:text="${reservaSem.data_fim}"></td>
                         <td th:text="${reservaSem.porta_id}"></td>
-                        <td><a th:href="${'/removerR/'+ reservaSem.id}" class="btn btn-sm btn-danger">X</a></td>
+                        <td><a th:href="${'/SemaremoverR/'+ reservaSem.id}" class="btn btn-sm btn-danger" onclick="desabilitaA()" >X</a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -147,11 +150,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-6 mt-5">
-                                    <span>Horario de Abertura</span>
+                                    <span>Data de inicio</span>
                                     <input id="date_ini" class="form-control" type="date"/>
                                 </div>
                                 <div class="col-6 mt-5">
-                                    <span>Horario de fechamento</span>
+                                    <span>Data de fim</span>
                                     <input id="date_fim" class="form-control" type="date"/>
                                 </div>
                             </div>
@@ -258,10 +261,32 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="email" tabindex="-1" aria-labelledby="novaReservaTitle"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="emailTittle">Escreva o E-mail que receberá o Relatório.</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <span>E-mail</span>
+                                    <input id="emailEnviar" class="form-control" type="text"/>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <a type="button" class="btn btn-danger text-start" data-bs-dismiss="modal">Cancelar</a>
+                                <button type="button" class="text-start btn btn-primary" onclick="enviarEmail()">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 </body>
 </html>

@@ -14,6 +14,7 @@ public class C_Hominha {
     @GetMapping("/Hominha")
     public String gethominha(HttpServletRequest request,HttpSession session, Model model){
         model.addAttribute("reserva",session.getAttribute("reserva"));
+        model.addAttribute("reservaSema",S_ReservaSema.listReservasSema());
         if(request.getHeader("Referer") != null){
             model.addAttribute("reservas",S_Reserva.listReservas());
             return "Home/Hominha";

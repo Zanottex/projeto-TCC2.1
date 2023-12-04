@@ -1,6 +1,7 @@
 package com.cronoporta.projeto.Controller;
 
 import com.cronoporta.projeto.Model.M_Resposta;
+import com.cronoporta.projeto.Service.S_Email;
 import com.cronoporta.projeto.Service.S_Reserva;
 import com.cronoporta.projeto.Service.S_ReservaSema;
 import jakarta.servlet.http.HttpSession;
@@ -64,6 +65,11 @@ public class C_Home {
         return null;
     }
 
+    @PostMapping("/Relatorio")
+    @ResponseBody
+    public M_Resposta enviarRelatorio(@RequestParam("email") String email){
+        return S_Email.sendMail(email);
+    }
 
 
 

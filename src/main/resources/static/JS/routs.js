@@ -8,11 +8,8 @@ function controleRotasGet(url){
             });
         }else if (url === "/Hominha"){
             $.get(url,function(data){
-                $("#mainFrame").html(data);
-                $(".a").click(function() {
-                    controleRotasGet($(this).attr("href"));
-                });
-            });
+            $("#mainFrame").html(data);
+                         });
         }else if (url === "/Portas"){
              $.get(url,function(data){
                 $("#mainFrame").html(data);
@@ -33,8 +30,8 @@ function controleRotasGet(url){
                let id = url.replace("/removerR/","");
                gerarSwal2(url, id);
         }
-        else if(url.startsWith("/removerRSema")){
-               let id = url.replace("/removerRSema/","");
+        else if(url.startsWith("/SemaremoverR")){
+               let id = url.replace("/SemaremoverR/","");
                gerarSwal3(url, id);
         }
         

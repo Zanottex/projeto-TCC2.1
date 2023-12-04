@@ -239,18 +239,35 @@ function criarLinha(idHorario, horarioE, horarioS, sala){
     '<td>' + data_aber.toLocaleDateString() + ' '+ data_aber.toLocaleTimeString() + '</td>' +
     '<td>' + data_fech.toLocaleDateString() + ' '+ data_fech.toLocaleTimeString() + '</td>' +
     '<td>' + sala + '</td>' +
-    '<td> <a th:href="${/removerR/ + reserva.id}" class="btn btn-sm btn-danger">-</a></td> '+
+    '<td> <a th:href="${/removerR/ + reserva.id}" class="btn btn-sm btn-danger">X</a></td> '+
     '</tr>');
 }
-//function criarLinhaSema(idHorario, horarioE, horarioS, sala, segunda, terca, quarta, quinta, sexta, sabado, domingo{
-//    let data_aber = new Date(horarioE);
-//    let data_fech = new Date(horarioS);
-//    $("#listaReservas").append('<tr>' +
-//    '<td>' + if(segunda){ 'segunda'}+ '<td>' +
-//    '<td>' + idHorario + '</td>' +
-//    '<td>' + data_aber +
-//    '<td>' + data_fech +
-//    '<td>' + sala + '</td>' +
-//    '<td> <a th:href="${/removerR/ + reserva.id}" class="btn btn-sm btn-danger">-</a></td> '+
-//    '</tr>');
-//}
+
+function criarLinhaSema(idHorario, horarioE, horarioS, sala, segunda, terca, quarta, quinta, sexta, sabado, domingo){
+    $("#listaReservas").append('<tr>' +
+    '<td>' + + '<td>' +
+    '<td>' + idHorario + '</td>' +
+    '<td>' + +
+    '<td>' + +
+    '<td>' + sala + '</td>' +
+    '<td> <a th:href="${/removerR/ + reserva.id}" class="btn btn-sm btn-danger">X</a></td> '+
+    '</tr>');
+}
+
+function enviarEmail(){
+    let email = $("#emailEnviar").val();
+
+    $.ajax({
+         type: "POST",
+         url: "/Relatorio",
+         data: {
+           email: email,
+         },
+          success: function (data){
+          mensagemSucesso("E-Mail enviado com sucesso.");
+          },
+          error: function (){
+          mensagemErro("Não foi possível enviar o E-Mail.")
+                    }
+                });
+}
