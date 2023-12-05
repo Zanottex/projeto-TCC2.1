@@ -21,7 +21,7 @@ public class C_Home {
         if (session.getAttribute("usuario") != null) {
             model.addAttribute("usuario",session.getAttribute("usuario"));
             model.addAttribute("reservas",S_Reserva.listReservas());
-            model.addAttribute("reservaSema",S_ReservaSema.listReservasSema());
+            model.addAttribute("reservaSema",S_ReservaSema.listReservasSema2());
             return "Home/home";
         } else {
             // A sessão não existe, redirecionar para a página de login

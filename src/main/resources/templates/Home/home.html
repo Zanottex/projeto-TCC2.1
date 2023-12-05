@@ -117,7 +117,7 @@
                     <tbody id="listaReservasSema">
                     <tr th:id="${'excloiSema'+reservaSem.id}" th:each="reservaSem : ${reservaSema}">
                         <td id="idHorarioSema" th:text="${reservaSem.id}"></td>
-                        <td></td>
+                        <td th:text="${reservaSem.dias}"></td>
                         <td th:text="${reservaSem.horario_aberturasema}"></td>
                         <td th:text="${reservaSem.horario_fechamentosema}"></td>
                         <td th:text="${#temporals.format(reservaSem.data_inicio, 'dd/MM/yyyy')}"></td>

@@ -1,14 +1,15 @@
 package com.cronoporta.projeto.Service;
 
-import com.cronoporta.projeto.Model.M_Dias;
-import com.cronoporta.projeto.Model.M_Reserva;
+
 import com.cronoporta.projeto.Model.M_ReservaSema;
 import com.cronoporta.projeto.Model.M_Resposta;
-import com.cronoporta.projeto.Repository.R_Reserva;
+import com.cronoporta.projeto.Model.M_dias;
+
 import com.cronoporta.projeto.Repository.R_ReservaSema;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.sql.Array;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -146,9 +147,32 @@ public class S_ReservaSema {
         return mensagem;
     }
     public static ArrayList<M_ReservaSema> listReservasSema(){
+
         return reservaSema.listReservasSema();
+
+
     }
 
+    public static ArrayList<M_dias> listReservasSema2(){
+        ArrayList<M_ReservaSema> array = reservaSema.listReservasSema();
+        ArrayList<M_dias> arrayfinal = new ArrayList<>();
+
+        for (M_ReservaSema r: reservaSema.listReservasSema()) {
+            M_dias mDias = new M_dias();
+            mDias.setDias(listdias(r.getId()));
+            mDias.setData_Fim(r.getData_fim());
+            mDias.setData_Inicio(r.getData_inicio());
+            mDias.setHorario_aberturasema(r.getHorario_aberturasema());
+            mDias.setHorario_fechamentosema(r.getHorario_fechamentosema());
+            mDias.setId(r.getId());
+            mDias.setporta_id(r.getPorta_id());
+
+            arrayfinal.add(mDias);
+        }
+        return arrayfinal;
+
+
+    }
 
 }
 
