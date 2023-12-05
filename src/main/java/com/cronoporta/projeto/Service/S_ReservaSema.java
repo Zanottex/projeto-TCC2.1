@@ -1,5 +1,7 @@
 package com.cronoporta.projeto.Service;
 
+import com.cronoporta.projeto.Model.M_Dias;
+import com.cronoporta.projeto.Model.M_Reserva;
 import com.cronoporta.projeto.Model.M_ReservaSema;
 import com.cronoporta.projeto.Model.M_Resposta;
 import com.cronoporta.projeto.Repository.R_Reserva;
@@ -67,11 +69,11 @@ public class S_ReservaSema {
             podeSalvar = false;
             mensagem += "A sala precisa ser preenchida.";
         }
-        if (S_Generico.textoEstaVazio(String.valueOf(horario_abertura))) {
+        if (S_Generico.textoEstaVazio(horario_abertura)) {
             podeSalvar = false;
             mensagem += "O horario de abertura precisa ser informada.";
         }
-        if (S_Generico.textoEstaVazio(String.valueOf(data_fechamento))) {
+        if (S_Generico.textoEstaVazio(data_fechamento)) {
             podeSalvar = false;
             mensagem += "O horario de fechamento precisa ser informada.";
         }
@@ -121,30 +123,32 @@ public class S_ReservaSema {
         String mensagem = "";
             M_ReservaSema mReservaSema = reservaSema.listar1reserva(id);
             if(mReservaSema.isDomingo()) {
-                mensagem += " Domingo ";
+                mensagem += " Domingo, ";
             }
             if(mReservaSema.isSegunda()) {
-                mensagem += " Segunda ";
+                mensagem += " Segunda, ";
             }
             if(mReservaSema.isTerca()) {
-                mensagem += " Terça ";
+                mensagem += " Terça, ";
             }
             if(mReservaSema.isQuarta()) {
-                mensagem += " Quarta ";
+                mensagem += " Quarta, ";
             }
             if(mReservaSema.isQuinta()) {
-                mensagem += " Quinta ";
+                mensagem += " Quinta, ";
             }
             if(mReservaSema.isSexta()) {
-                mensagem += " Sexta ";
+                mensagem += " Sexta, ";
             }
             if(mReservaSema.isSabado()) {
-                mensagem += " Sábado ";
+                mensagem += " Sábado, ";
         }
         return mensagem;
     }
     public static ArrayList<M_ReservaSema> listReservasSema(){
         return reservaSema.listReservasSema();
     }
+
+
 }
 

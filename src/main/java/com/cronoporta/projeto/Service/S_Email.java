@@ -39,31 +39,23 @@ public class S_Email {
                 reservas_texto += " Abertura: " + r.getData_abertura();
                 reservas_texto += " Fechamento: " + r.getData_fechamento() + "\n\n";
             }
-            String e_mail1 = reservas_texto;
-            message.setText(e_mail1);
 
 
-            //E-Mail 2
-
-            SimpleMailMessage message2 = new SimpleMailMessage();
-            message2.setTo(email);
-            String reservasSema_texto = "";
             List<M_ReservaSema> reservasSema = S_ReservaSema.listReservasSema();
-            message2.setSubject("Relatório dos horarios Semanais ativos:");
+            reservas_texto += "\nReservas semanais:\n";
             for(M_ReservaSema r : reservasSema){
-                reservasSema_texto += "Reserva: " + r.getId();
-                reservasSema_texto += " Dias: " + S_ReservaSema.listdias(r.getId());
-                reservasSema_texto += " Porta: " + r.getPorta_id();
-                reservasSema_texto += " Horario de Abertura: " + r.getHorario_aberturasema();
-                reservasSema_texto += " Horario de Fechamento: " + r.getHorario_aberturasema();
-                reservasSema_texto += " Data de inicio: " + r.getData_inicio();
-                reservasSema_texto += " Data de fim: " + r.getData_fim() + "\n\n";
+                reservas_texto += "Reserva: " + r.getId();
+                reservas_texto += " Dias: " + S_ReservaSema.listdias(r.getId());
+                reservas_texto += " Porta: " + r.getPorta_id();
+                reservas_texto += " Horario de Abertura: " + r.getHorario_aberturasema();
+                reservas_texto += " Horario de Fechamento: " + r.getHorario_fechamentosema();
+                reservas_texto += " Data de inicio: " + r.getData_inicio();
+                reservas_texto += " Data de fim: " + r.getData_fim() + "\n\n";
             }
-            message2.setText("e_mail2");
+            message.setText(reservas_texto);
 
             try {
                 mailSender.send(message);
-                mailSender.send(message2);
                 mensagem = "E-mail de relatório enviado!";
                 deubom = true;
             }catch (Exception e){

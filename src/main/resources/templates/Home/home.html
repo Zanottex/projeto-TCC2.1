@@ -117,11 +117,11 @@
                     <tbody id="listaReservasSema">
                     <tr th:id="${'excloiSema'+reservaSem.id}" th:each="reservaSem : ${reservaSema}">
                         <td id="idHorarioSema" th:text="${reservaSem.id}"></td>
-                        <td>  </td>
+                        <td></td>
                         <td th:text="${reservaSem.horario_aberturasema}"></td>
                         <td th:text="${reservaSem.horario_fechamentosema}"></td>
-                        <td th:text="${reservaSem.data_inicio}"></td>
-                        <td th:text="${reservaSem.data_fim}"></td>
+                        <td th:text="${#temporals.format(reservaSem.data_inicio, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${#temporals.format(reservaSem.data_fim, 'dd/MM/yyyy')}"></td>
                         <td th:text="${reservaSem.porta_id}"></td>
                         <td><a th:href="${'/SemaremoverR/'+ reservaSem.id}" class="btn btn-sm btn-danger" onclick="desabilitaA()" >X</a></td>
                     </tr>
